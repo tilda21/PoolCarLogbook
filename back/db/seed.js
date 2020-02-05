@@ -8,5 +8,6 @@ const insertRecords = new Promise(
 		if (err) reject(err);
 		console.log('records inserted');
 		resolve();
+		connection.end();
 	})
 );
