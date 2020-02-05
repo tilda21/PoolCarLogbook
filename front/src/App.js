@@ -1,11 +1,20 @@
 import React from 'react';
 import './App.css';
+import Navbar from './Navbar';
+import Booking from './Booking';
+import Footer from './Footer';
+import Button from './Button';
+import Trip from './Trip';
 
 function App() {
   return (
-    <div className="App">
-      <h1>Hello babes</h1>
-    </div>
+    <>
+      <Trip />
+      {/* <Navbar />
+      <Booking />
+      <Button />
+      <Footer /> */}
+    </>
   );
 }
 
