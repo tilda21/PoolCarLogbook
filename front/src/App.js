@@ -1,4 +1,6 @@
+
 import React, {Component} from 'react';
+
 import { Switch, Route } from "react-router-dom";
 import './App.css';
 import Navbar from './Navbar';
@@ -9,14 +11,30 @@ import TripKm from './TripKm';
 import Homepage from './Homepage';
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { data: [] };
+  }
 
-  
-  
+  componentDidMount() {
+    this.getAllData();
+  }
+
+  getAllData = () => {
+    fetch('http://localhost:5000/')
+      .then(res => res.json())
+      .then(data => {
+        this.setState({ data })
+      })
+  }
+
+
   render() {
     return (
       <>
         <Navbar />
         <Switch>
+
           <Route exact path='/'>
             <Homepage />
           </Route>
@@ -31,6 +49,7 @@ class App extends Component {
           </Route>
         </Switch>       
         
+
         <Footer />
       </>
     );

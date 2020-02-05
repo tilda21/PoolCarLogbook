@@ -4,7 +4,7 @@
     "description": "Wild server",
     "main": "app.js",
     "scripts": {
-        "start": "node app.js",
+        "start": "nodemon app.js",
         "db:create": "node ./db/create.js",
         "db:seed": "node ./db/seed.js"
     },
@@ -13,7 +13,9 @@
         "body-parser": "^1.18.2",
         "dotenv": "^8.2.0",
         "express": "^4.16.3",
+        "global": "^4.4.0",
         "morgan": "^1.9.0",
-        "mysql": "^2.17.1"
+        "mysql": "^2.17.1",
+        "nodemon": "^2.0.2"
     }
 }
