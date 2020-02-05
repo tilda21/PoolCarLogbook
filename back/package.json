@@ -4,7 +4,9 @@
     "description": "Wild server",
     "main": "app.js",
     "scripts": {
-        "start": "node app.js"
+        "start": "node app.js",
+        "db:create": "node ./db/create.js",
+        "db:seed": "node ./db/seed.js"
     },
     "author": "wilder",
     "dependencies": {
