@@ -3,11 +3,13 @@ import Button from './Button';
 
 const TripCard = () => {
     return(
-        <div>Driver</div>
-        <div>Destination</div>
-        <div>Start</div>
-        <div>End</div>
-        <Button />
+        <>
+            <div>Driver</div>
+            <div>Destination</div>
+            <div>Start</div>
+            <div>End</div>
+            <Button />
+        </>
     )
 }
 
