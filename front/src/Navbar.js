@@ -6,7 +6,7 @@ const Navbar = () => {
         <div className='navbar-container'>
             <div>
                 <Link to='/'>
-                    <img src="https://via.placeholder.com/150" alt="logo"/>
+                    <img src="https://i.imgur.com/j8aPf6r.png" alt="Volkswagen Digital Solutions logo" width='300px'/>
                 </Link>
             </div>
             <Link to='/trip'>Start</Link>
