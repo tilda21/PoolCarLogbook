@@ -1,8 +1,13 @@
 import React from 'react';
+import Button from './Button';
 
 const TripCard = () => {
     return(
-        <div>this is the TripCard component</div>
+        <div>Driver</div>
+        <div>Destination</div>
+        <div>Start</div>
+        <div>End</div>
+        <Button />
     )
 }
 
