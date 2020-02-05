@@ -15,7 +15,8 @@ connection.query(`CREATE TABLE records
 )`,
 (err) => {
 	if (err) console.log(err);
-	console.log('table records created');
+    console.log('table records created');
+    connection.end();
 }
 );
 
