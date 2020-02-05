@@ -17,7 +17,7 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public'));
 
 // implement the API part
-app.get('/', router);
+app.use('/', router);
 
 
 /// in case path is not found, return the 'Not Found' 404 code

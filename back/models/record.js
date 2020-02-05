@@ -27,7 +27,7 @@ Record.postBooking = (recordInfo, callback) => {
             recordInfo.end_time,
             recordInfo.destination,
             recordInfo.driver_name,
-            record_info.car_plate
+            recordInfo.car_plate
 		],
 		(err, results, fields) => {
 			callback(err, results, fields);
@@ -40,13 +40,10 @@ Record.postBooking = (recordInfo, callback) => {
 //update start trip - insert info in records table
 Record.updateStartTrip = (recordInfo, callback) => {
 	connection.query(
-		`UPDATE records (
-			id,
-			start_km,
-			) VALUES (?, ?)`,
+		`UPDATE records SET start_km = ? WHERE id = ?`,
 		[
-			recordInfo.id,
-            recordInfo.start_km,
+			recordInfo.start_km,
+			recordInfo.id
             
 		],
 		(err, results, fields) => {
@@ -59,13 +56,10 @@ Record.updateStartTrip = (recordInfo, callback) => {
 //update end trip - insert info in records table
 Record.updateEndTrip = (recordInfo, callback) => {
 	connection.query(
-		`UPDATE records (
-			id,
-			end_km,
-			) VALUES (?, ?)`,
+		`UPDATE records SET end_km = ? WHERE id = ?`,
 		[
-			recordInfo.id,
-            recordInfo.end_km,
+			recordInfo.end_km,
+			recordInfo.id
             
 		],
 		(err, results, fields) => {
@@ -73,3 +67,5 @@ Record.updateEndTrip = (recordInfo, callback) => {
 		}
 	);
 };
+
+module.exports = Record;
