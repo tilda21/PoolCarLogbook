@@ -1,4 +1,6 @@
-import React, { Component } from 'react';
+
+import React, {Component} from 'react';
+
 import { Switch, Route } from "react-router-dom";
 import './App.css';
 import Navbar from './Navbar';
@@ -7,7 +9,6 @@ import Footer from './Footer';
 import Trip from './Trip';
 import TripKm from './TripKm';
 import Homepage from './Homepage';
-
 
 class App extends Component {
   constructor(props) {
@@ -27,16 +28,28 @@ class App extends Component {
       })
   }
 
+
   render() {
     return (
       <>
         <Navbar />
         <Switch>
-          <Route exact path='/' component={Homepage} />
-          <Route path='/trip' component={Trip} />
-          <Route path='/booking' component={Booking} />          
-          <Route path='/tripkm' component={TripKm} />      
-        </Switch>
+
+          <Route exact path='/'>
+            <Homepage />
+          </Route>
+          <Route path='/trip'>
+            <Trip />
+          </Route>
+          <Route path='/booking'>
+            <Booking />
+          </Route>
+          <Route path='/tripkm'>
+            <TripKm />
+          </Route>
+        </Switch>       
+        
+
         <Footer />
       </>
     );
