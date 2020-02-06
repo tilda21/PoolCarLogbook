@@ -6,9 +6,11 @@ const bodyParser = require('body-parser');
 const morgan = require('morgan');
 const app = express();
 const router = require('./routes/index.js');
+var cors = require('cors')
 
 require('dotenv').config()
 
+app.use(cors())
 
 // set up the application
 app.use(morgan('dev'));
