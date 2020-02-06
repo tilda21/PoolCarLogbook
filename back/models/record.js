@@ -4,7 +4,10 @@ const Record = {};
 
 // get list of all projects
 Record.getAllRecords = (callback) => {
-	connection.query(`SELECT  * FROM records`, (err, results) => {
+	connection.query(
+		`
+			SELECT * FROM records
+		`, (err, results) => {
 		callback(err, results);
 	});
 };
@@ -15,8 +18,8 @@ Record.postBooking = (recordInfo, callback) => {
 	connection.query(
 		`INSERT INTO records (
 			book_date,
-			start_time,
-			end_time,
+			start_date_time,
+			end_date_time,
 			destination,
 			driver_name,
 			car_plate
