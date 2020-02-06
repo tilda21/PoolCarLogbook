@@ -24,31 +24,25 @@ class App extends Component {
     fetch('http://localhost:5000/')
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         this.setState({ data })
       })
   }
 
 
   render() {
+<<<<<<< HEAD
     console.log(this.state.data);
+=======
+    const { data } = this.state;
+>>>>>>> a51d8463ca183c1463b53e68cc48a31b9ad4a8c1
     return (
       <>
         <Navbar />
         <Switch>
-
-          <Route exact path='/'>
-            <Homepage />
-          </Route>
-          <Route path='/trip'>
-            <Trip />
-          </Route>
-          <Route path='/booking'>
-            <Booking />
-          </Route>
-          <Route path='/tripkm'>
-            <TripKm />
-          </Route>
+          <Route exact path='/' component={() => <Homepage data={data} />} />
+          <Route path='/trip' component={() => <Trip data={data} />} />
+          <Route path='/booking' component={() => <Booking data={data} />} />
+          <Route path='/tripkm' component={() => <TripKm data={data} />} />
         </Switch>       
         
 
