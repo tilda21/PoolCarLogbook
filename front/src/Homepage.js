@@ -3,7 +3,6 @@ import { Link } from "react-router-dom";
   
 
 const Homepage = ({ data }) => {
-    console.log(data)
     return(
         <>
             <h1>Title</h1>
