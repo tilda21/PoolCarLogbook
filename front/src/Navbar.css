@@ -1,0 +1,36 @@
+navbar {
+    width: 75%;
+    position: relative;
+    text-align: center;
+    align-items: flex-end;
+    background-color: white;
+}
+  
+.navbarlink {
+    width: 5%;
+    float: left;
+}
+  
+.navbarlink:hover {
+    color: white;
+    background-color: rgb(162, 30, 77);
+}
+
+.navbarlink {
+    color: rgb(162, 30, 77);
+    background-color: white;
+}
+
+.navbarlink {
+    color: rgb(162, 30, 77);
+    background-color: white;
+}
+  
+.navbar-container {
+    display: flex;
+    align-items: center;
+}
+  
+.navbar-container div {
+    padding: 2%;
+}
