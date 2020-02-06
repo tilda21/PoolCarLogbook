@@ -26,17 +26,13 @@ var items = [
 ];
 
 export default class Agenda extends Component {
-  constructor(props){
-  super(props);
-
-
-
+  constructor(data){
+  super(data);
 this.state = {
   items:[],
   selected:[],
   cellHeight:(60 / 4),
   showModal:false,
-  locale:"fr",
   rowsPerHour:1,
   numberOfDays:1,
   startDate: new Date()
@@ -181,14 +177,13 @@ this.setState({numberOfDays:days})
           startAtTime={8}
           endAtTime={23}
           cellHeight={this.state.cellHeight}
-          locale="fr"
           items={this.state.items}
           numberOfDays={this.state.numberOfDays}
           headFormat={"ddd DD MMM"}
           rowsPerHour={this.state.rowsPerHour}
           itemColors={colors}
           helper={true}
-          //itemComponent={AgendaItem}
+          itemComponent={AgendaItem}
           view="calendar"
           autoScale={false}
           fixedHeader={true}
