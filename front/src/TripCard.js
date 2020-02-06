@@ -3,7 +3,7 @@ import Moment from 'react-moment';
 import Button from './Button';
 
 const TripCard = ({ trip }) => {
-    console.log(trip);
+    //console.log(trip);
     return(
         <>
             <div>Driver: {trip.driver_name}</div>
