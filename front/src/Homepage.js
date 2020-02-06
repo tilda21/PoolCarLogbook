@@ -1,28 +1,31 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import './homepage.css';
   
 
 const Homepage = ({ data }) => {
     return(
-        <>
-            <h1>Title</h1>
-            <div>
-                <ul>
-                    <li>
-                        <Link to='/booking'>Booking</Link>
-                    </li>
-                    <li>
-                        <Link to='/trip'>Trips Log</Link>
-                    </li>
-                    <li>
-                        <Link to='/trip/start'>Start Trip</Link>
-                    </li>
-                    <li>
-                        <Link to='/trip/end'>End Trip</Link>
-                    </li>
-                </ul>
-            </div>     
-        </>
+        <div class='home'>
+            <h1 class='home_title'>CAR POOL LOG</h1>
+            <div class='home'>
+                <nav>
+                    <ul class='home_list'>
+                        <li>
+                            <Link class='home_link' to='/booking'>Booking</Link>
+                        </li>
+                        <li>
+                            <Link class='home_link' to='/trip'>Start Trip</Link>
+                        </li>
+                        <li>
+                            <Link class='home_link' to='/trip'>End Trip</Link>
+                        </li>
+                        <li>
+                            <Link class='home_link' to='/trip'>Trips Log</Link>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
     )
 }
 
