@@ -1,9 +1,12 @@
 import React from 'react';
 import Moment from 'react-moment';
 import Button from './Button';
+import { Link } from "react-router-dom";
+
 
 const TripCard = ({ trip }) => {
     //console.log(trip);
+
     return(
         <>
             <div>Driver: {trip.driver_name}</div>
@@ -11,7 +14,9 @@ const TripCard = ({ trip }) => {
             <div>Destination: {trip.destination}</div>
             <div>Start: {trip.start_time.slice(0, -3)}</div>
             <div>End: {trip.end_time.slice(0, -3)}</div>
-            <Button />
+            <Link to={`/tripkm/${trip.id}`}>
+                Trip Km
+            </Link>
         </>
     )
 }

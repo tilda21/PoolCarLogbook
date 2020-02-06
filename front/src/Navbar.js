@@ -11,8 +11,8 @@ const Navbar = () => {
                 </Link>
             </div>
             <div className="navbar">
-                <Link to='/trip'><a class="navbarlink">Start</a></Link>
-                <Link to='/trip'><a class="navbarlink">End</a></Link>
+                <Link to='/trip/start'><a class="navbarlink">Start</a></Link>
+                <Link to='/trip/end'><a class="navbarlink">End</a></Link>
                 <Link to='/trip'><a class="navbarlink2">Trips Log</a></Link>
             </div>
         </div>

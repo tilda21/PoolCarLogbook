@@ -10,6 +10,7 @@ import Trip from './Trip';
 import TripKm from './TripKm';
 import Homepage from './Homepage';
 
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -28,22 +29,26 @@ class App extends Component {
       })
       
   }
-
-
+  
   render() {
     const { data } = this.state;
 
     const dataStart = [];
     const dataEnd = [];
-    for (let i=0; i < data.length; i++) {
+
+    let verification = (i) => {
+      
       const startkm = data[i].start_km;
       const endkm = data[i].end_km;
-      //console.log(element);
       if(!startkm){
         dataStart[i] = data[i];
       }else if(startkm && !endkm){
         dataEnd[i] = data[i];
       }
+    }
+    
+    for (let i=0; i < data.length; i++) {
+      verification(i);
     }
     //console.log(dataStart);
     return (
@@ -55,9 +60,16 @@ class App extends Component {
           <Route path='/trip/end' component={() => <Trip data={dataEnd} />} />
           <Route path='/trip' component={() => <Trip data={data} />} />
           <Route path='/booking' component={() => <Booking data={data} />} />
-          <Route path='/tripkm' component={() => <TripKm data={data} />} />
+          <Route 
+            path='/tripkm/:id' 
+            render={
+              (props) => {
+                const id = props.match.params.id;
+                return <TripKm data={data} id={id} />
+              }
+            }
+          />
         </Switch>       
-        
 
         <Footer />
       </>
