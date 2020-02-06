@@ -4,12 +4,3 @@
 .App {
   text-align: center;
 }
-
-.navbar-container {
-  display: flex;
-  align-items: center;
-}
-
-.navbar-container div {
-  padding: 2%;
-}
