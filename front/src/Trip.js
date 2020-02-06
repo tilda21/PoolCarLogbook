@@ -1,5 +1,6 @@
 import React from 'react';
 import TripCard from './TripCard';
+import './triplog.css';
 
 const Trip = (props) => {
 
@@ -9,14 +10,17 @@ const Trip = (props) => {
 
     return(
         <>
-            <h1>Select your trip/Trips log</h1>
-            <select name="driver" id="driver">
-                <option value="driver">driver</option>
-            </select>
-            
-            { 
-                data.map(trip => <TripCard trip={trip} key={trip.id} />) 
-            }
+            <h1 class="triplog_title">Select your trip/Trips log</h1>
+            <div className="triplog_content">
+                <div className="triplog_select">
+                    <select name="driver" id="driver">
+                        <option value="driver">driver</option>
+                    </select>
+                </div>
+                { 
+                    data.map(trip => <TripCard trip={trip} key={trip.id} />) 
+                }
+            </div>
         </>
     )
 }
