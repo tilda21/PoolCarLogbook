@@ -3861,9 +3861,9 @@ dotenv@8.2.0:
   resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-8.2.0.tgz#97e619259ada750eea3e4ea3e26bceea5424b16a"
   integrity sha512-8sJ78ElpbDJBHNeBzUbUVLsqKdccaa/BXF1uPTw3GrvQTBgrQrtObr2mUrE38vzYd8cEv+m/JBfDLioYcfXoaw==
 
-"drag-drop-touch-polyfill@git+https://github.com/Revln9/drag-drop-touch-polyfill-ES5-compiled.git":
+"drag-drop-touch-polyfill@https://github.com/Revln9/drag-drop-touch-polyfill-ES5-compiled.git":
   version "1.0.0"
-  resolved "git+https://github.com/Revln9/drag-drop-touch-polyfill-ES5-compiled.git#9149472c1256683d86b388043fe8fd44a834d825"
+  resolved "https://github.com/Revln9/drag-drop-touch-polyfill-ES5-compiled.git#9149472c1256683d86b388043fe8fd44a834d825"
 
 duplexer@^0.1.1:
   version "0.1.1"
