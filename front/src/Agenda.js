@@ -22,14 +22,21 @@ var items = [
     endDateTime   : new Date(now.getFullYear(), now.getMonth(), now.getDate(), 12, 0),
     classes       : 'color-1 color-4'
   },
- 
+  {
+    _id            :guid(),
+     name          : 'bla bla',
+     startDateTime : new Date(now.getFullYear(), now.getMonth(), now.getDate(), 10, 0),
+     endDateTime   : new Date(now.getFullYear(), now.getMonth(), now.getDate(), 12, 0),
+     classes       : 'color-1 color-4'
+   },
+  
 ];
 
 export default class Agenda extends Component {
-  constructor(data){
-  super(data);
+  constructor(props){
+  super(props);
 this.state = {
-  items:[],
+  items: [],
   selected:[],
   cellHeight:(60 / 4),
   showModal:false,
@@ -151,9 +158,9 @@ this.setState({numberOfDays:days})
 
 
   render() {
-
+    
     var AgendaItem = function(props){
-      console.log( ' item component props' , props)
+      
       return <div style={{display:'block', position:'absolute' , background:'#FFF'}}>{props.item.name} <button onClick={()=> props.edit(props.item)}>Edit </button></div>
     }
     return (

@@ -30,11 +30,7 @@ class App extends Component {
 
 
   render() {
-<<<<<<< HEAD
-    console.log(this.state.data);
-=======
     const { data } = this.state;
->>>>>>> a51d8463ca183c1463b53e68cc48a31b9ad4a8c1
     return (
       <>
         <Navbar />
