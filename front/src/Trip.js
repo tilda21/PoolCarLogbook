@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import TripCard from './TripCard';
 
-const Trip = () => {
+const Trip = ({ data }) => {
     return(
         <>
             <h1>Select your trip/Trips log</h1>
@@ -10,7 +10,7 @@ const Trip = () => {
                 <option value="driver">driver</option>
             </select>
             <Link to='/tripkm'>Trip Km</Link>
-            <TripCard />
+            { data.map(trip => <TripCard trip={trip} />) }
         </>
     )
 }
