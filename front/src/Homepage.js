@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
   
 
 const Homepage = ({ data }) => {
@@ -7,23 +7,21 @@ const Homepage = ({ data }) => {
         <>
             <h1>Title</h1>
             <div>
-                <nav>
-                    <ul>
-                        <li>
-                            <Link to='/booking'>Booking</Link>
-                        </li>
-                        <li>
-                            <Link to='/trip'>Start Trip</Link>
-                        </li>
-                        <li>
-                            <Link to='/trip'>End Trip</Link>
-                        </li>
-                        <li>
-                            <Link to='/trip'>Trips Log</Link>
-                        </li>
-                    </ul>
-                </nav>
-            </div>
+                <ul>
+                    <li>
+                        <Link to='/booking'>Booking</Link>
+                    </li>
+                    <li>
+                        <Link to='/trip'>Trips Log</Link>
+                    </li>
+                    <li>
+                        <Link to='/trip/start'>Start Trip</Link>
+                    </li>
+                    <li>
+                        <Link to='/trip/end'>End Trip</Link>
+                    </li>
+                </ul>
+            </div>     
         </>
     )
 }
