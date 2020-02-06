@@ -14,10 +14,10 @@ const Homepage = ({ data }) => {
                             <Link class='home_link' to='/booking'>Booking</Link>
                         </li>
                         <li>
-                            <Link class='home_link' to='/trip'>Start Trip</Link>
+                            <Link class='home_link' to='/trip/start'>Start Trip</Link>
                         </li>
                         <li>
-                            <Link class='home_link' to='/trip'>End Trip</Link>
+                            <Link class='home_link' to='/trip/end'>End Trip</Link>
                         </li>
                         <li>
                             <Link class='home_link' to='/trip'>Trips Log</Link>
