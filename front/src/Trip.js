@@ -8,10 +8,12 @@ const Trip = ({ data }) => {
         <>
             <h1 class="triplog_title">Select your trip/Trips log</h1>
             <div className="triplog_content">
-                <select name="driver" id="driver">
-                    <option value="driver">driver</option>
-                </select>
-                <Link to='/tripkm'>Trip Km</Link>
+                <div className="triplog_select">
+                    <select name="driver" id="driver">
+                        <option value="driver">driver</option>
+                    </select>
+                    <Link to='/tripkm'>Trip Km</Link>
+                </div>
                 { data.map(trip => <TripCard trip={trip} />) }
             </div>
         </>
