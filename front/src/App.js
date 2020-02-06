@@ -20,14 +20,16 @@ class App extends Component {
   }
 
   getAllData = () => {
-    fetch('http://localhost:5000/')
+    fetch('http://localhost:5000/api')
       .then(res => res.json())
       .then(data => {
         this.setState({ data })
       })
+      
   }
 
   render() {
+    console.log(this.state.data)
     return (
       <>
         <Navbar />
