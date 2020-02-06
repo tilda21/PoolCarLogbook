@@ -4,7 +4,7 @@ import Button from './Button';
 import './triplog.css';
 
 const TripCard = ({ trip }) => {
-    console.log(trip);
+    //console.log(trip);
     return(
         <div className="triplog_card">
             <div className="triplog_driver_info">
