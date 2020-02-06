@@ -22,21 +22,24 @@ var items = [
     endDateTime   : new Date(now.getFullYear(), now.getMonth(), now.getDate(), 12, 0),
     classes       : 'color-1 color-4'
   },
- 
+  {
+    _id            :guid(),
+     name          : 'bla bla',
+     startDateTime : new Date(now.getFullYear(), now.getMonth(), now.getDate(), 10, 0),
+     endDateTime   : new Date(now.getFullYear(), now.getMonth(), now.getDate(), 12, 0),
+     classes       : 'color-1 color-4'
+   },
+  
 ];
 
 export default class Agenda extends Component {
   constructor(props){
   super(props);
-
-
-
 this.state = {
-  items:[],
+  items: [],
   selected:[],
   cellHeight:(60 / 4),
   showModal:false,
-  locale:"fr",
   rowsPerHour:1,
   numberOfDays:1,
   startDate: new Date()
@@ -155,9 +158,9 @@ this.setState({numberOfDays:days})
 
 
   render() {
-
+    
     var AgendaItem = function(props){
-      console.log( ' item component props' , props)
+      
       return <div style={{display:'block', position:'absolute' , background:'#FFF'}}>{props.item.name} <button onClick={()=> props.edit(props.item)}>Edit </button></div>
     }
     return (
@@ -181,14 +184,13 @@ this.setState({numberOfDays:days})
           startAtTime={8}
           endAtTime={23}
           cellHeight={this.state.cellHeight}
-          locale="fr"
           items={this.state.items}
           numberOfDays={this.state.numberOfDays}
           headFormat={"ddd DD MMM"}
           rowsPerHour={this.state.rowsPerHour}
           itemColors={colors}
           helper={true}
-          //itemComponent={AgendaItem}
+          itemComponent={AgendaItem}
           view="calendar"
           autoScale={false}
           fixedHeader={true}
