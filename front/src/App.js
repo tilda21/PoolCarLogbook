@@ -1,6 +1,5 @@
 
 import React, {Component} from 'react';
-
 import { Switch, Route } from "react-router-dom";
 import './App.css';
 import Navbar from './Navbar';
@@ -9,6 +8,7 @@ import Footer from './Footer';
 import Trip from './Trip';
 import TripKm from './TripKm';
 import Homepage from './Homepage';
+
 
 class App extends Component {
   constructor(props) {
@@ -24,9 +24,17 @@ class App extends Component {
     fetch('http://localhost:5000/')
       .then(res => res.json())
       .then(data => {
-        this.setState({ data })
-      })
-      
+        const items = data.map(el => 
+         ({
+          _id: el.id,
+          name: el.driver_name,
+          startDateTime: new Date(el.start_date_time.split('00:00:00').join(el.start_time)),
+          endDateTime: new Date(el.end_date_time.split('00:00:00').join(el.end_time)),
+          classes: 'red'
+        }))
+        this.setState({ data: items })
+        }
+      )
   }
 
 
