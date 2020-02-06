@@ -40,11 +40,27 @@ class App extends Component {
 
   render() {
     const { data } = this.state;
+
+    const dataStart = [];
+    const dataEnd = [];
+    for (let i=0; i < data.length; i++) {
+      const startkm = data[i].start_km;
+      const endkm = data[i].end_km;
+      //console.log(element);
+      if(!startkm){
+        dataStart[i] = data[i];
+      }else if(startkm && !endkm){
+        dataEnd[i] = data[i];
+      }
+    }
+    //console.log(dataStart);
     return (
       <>
         <Navbar />
         <Switch>
           <Route exact path='/' component={() => <Homepage data={data} />} />
+          <Route path='/trip/start' component={() => <Trip data={dataStart} />} />
+          <Route path='/trip/end' component={() => <Trip data={dataEnd} />} />
           <Route path='/trip' component={() => <Trip data={data} />} />
           <Route path='/booking' component={() => <Booking data={data} />} />
           <Route path='/tripkm' component={() => <TripKm data={data} />} />

@@ -1,30 +1,31 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import './homepage.css';
   
 
 const Homepage = ({ data }) => {
     return(
-        <>
-            <h1>Title</h1>
-            <div>
+        <div class='home'>
+            <h1 class='home_title'>CAR POOL LOG</h1>
+            <div class='home'>
                 <nav>
-                    <ul>
+                    <ul class='home_list'>
                         <li>
-                            <Link to='/booking'>Booking</Link>
+                            <Link class='home_link' to='/booking'>Booking</Link>
                         </li>
                         <li>
-                            <Link to='/trip'>Start Trip</Link>
+                            <Link class='home_link' to='/trip/start'>Start Trip</Link>
                         </li>
                         <li>
-                            <Link to='/trip'>End Trip</Link>
+                            <Link class='home_link' to='/trip/end'>End Trip</Link>
                         </li>
                         <li>
-                            <Link to='/trip'>Trips Log</Link>
+                            <Link class='home_link' to='/trip'>Trips Log</Link>
                         </li>
                     </ul>
                 </nav>
             </div>
-        </>
+        </div>
     )
 }
 

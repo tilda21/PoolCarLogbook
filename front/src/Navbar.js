@@ -1,17 +1,20 @@
 import React from 'react';
 import { Link } from "react-router-dom";
+import './Navbar.css';
 
 const Navbar = () => {
     return(
         <div className='navbar-container'>
             <div>
                 <Link to='/'>
-                    <img src="https://via.placeholder.com/150" alt="logo"/>
+                    <img src="https://i.imgur.com/j8aPf6r.png" alt="Volkswagen Digital Solutions" class="VWDS-logo"/>
                 </Link>
             </div>
-            <Link to='/trip'>Start</Link>
-            <Link to='/trip'><div>End</div></Link>
-            <Link to='/trip'><div>Trips Log</div></Link>
+            <div className="navbar">
+                <Link to='/trip'><a class="navbarlink">Start</a></Link>
+                <Link to='/trip'><a class="navbarlink">End</a></Link>
+                <Link to='/trip'><a class="navbarlink2">Trips Log</a></Link>
+            </div>
         </div>
     )
 }

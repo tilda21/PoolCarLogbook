@@ -22,7 +22,14 @@ const items = [
     endDateTime   : new Date(now.getFullYear(), now.getMonth(), now.getDate(), 12, 0),
     classes       : 'color-1 color-4'
   },
- 
+  {
+    _id            :guid(),
+     name          : 'bla bla',
+     startDateTime : new Date(now.getFullYear(), now.getMonth(), now.getDate(), 10, 0),
+     endDateTime   : new Date(now.getFullYear(), now.getMonth(), now.getDate(), 12, 0),
+     classes       : 'color-1 color-4'
+   },
+  
 ];
 
 export default class Agenda extends Component {
@@ -123,7 +130,11 @@ export default class Agenda extends Component {
 
 
   render() {
-    console.log(this.state.items)
+    
+    var AgendaItem = function(props){
+      
+      return <div style={{display:'block', position:'absolute' , background:'#FFF'}}>{props.item.name} <button onClick={()=> props.edit(props.item)}>Edit </button></div>
+    }
     return (
       
       <div className="content-expanded ">
@@ -152,7 +163,7 @@ export default class Agenda extends Component {
           rowsPerHour={this.state.rowsPerHour}
           itemColors={colors}
           helper={true}
-          //itemComponent={AgendaItem}
+          itemComponent={AgendaItem}
           view="calendar"
           autoScale={false}
           fixedHeader={true}

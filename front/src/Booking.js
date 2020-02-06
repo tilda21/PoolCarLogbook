@@ -1,5 +1,6 @@
 import React from 'react';
 import Agenda from './Agenda';
+import './booking.css';
 
 const Booking = ({ data }) => {
     return (
