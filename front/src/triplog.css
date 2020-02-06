@@ -1,0 +1,13 @@
+.triplog_title {
+    font-family: "VWAGTheSans-Bold.otf";
+    color:rgb(162, 30, 77);
+}
+
+.triplog_content {
+    width: 100%;
+    justify-content: center;
+}
+
+.triplog_card {
+
+}
