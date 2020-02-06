@@ -7,14 +7,14 @@ const Navbar = () => {
         <div className='navbar-container'>
             <div>
                 <Link to='/'>
-                    <img src="https://i.imgur.com/j8aPf6r.png" alt="Volkswagen Digital Solutions" width='397'/>
+                    <img src="https://i.imgur.com/j8aPf6r.png" alt="Volkswagen Digital Solutions" class="VWDS-logo"/>
                 </Link>
             </div>
-            <navbar>
+            <div className="navbar">
                 <Link to='/trip'><a class="navbarlink">Start</a></Link>
                 <Link to='/trip'><a class="navbarlink">End</a></Link>
-                <Link to='/trip'><a class="navbarlink">Trips Log</a></Link>
-            </navbar>
+                <Link to='/trip'><a class="navbarlink2">Trips Log</a></Link>
+            </div>
         </div>
     )
 }
