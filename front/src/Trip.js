@@ -12,12 +12,16 @@ const Trip = (props) => {
     return(
         <>
             <h1 class="triplog_title">Select your trip/Trips log</h1>
-            <div className="triplog_content">
-                <div className="triplog_select">
-                    <select name="driver" id="driver">
-                        <option value="driver">driver</option>
-                    </select>
-                    <Link to='/tripkm'>Trip Km</Link>
+            <div class="triplog_content">
+                <div class="triplog_select_km">
+                    <div class="triplog_select">
+                        <select name="driver" id="driver">
+                            <option value="driver">driver</option>
+                        </select>
+                    </div>
+                    <div class="triplog_km">
+                        <Link to='/tripkm'>Trip Km</Link>
+                    </div>
                 </div>
                 { data.map(trip => <TripCard trip={trip} />) }
             </div>

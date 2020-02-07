@@ -4,16 +4,16 @@ import './Navbar.css';
 
 const Navbar = () => {
     return(
-        <div className='navbar-container'>
+        <div class='nav_container'>
             <div>
                 <Link to='/'>
-                    <img src="https://i.imgur.com/j8aPf6r.png" alt="Volkswagen Digital Solutions" class="VWDS-logo"/>
+                    <img src="https://i.imgur.com/j8aPf6r.png" alt="Volkswagen Digital Solutions" class="nav_logo"/>
                 </Link>
             </div>
-            <div className="navbar">
-                <Link to='/trip'><a class="navbarlink">Start</a></Link>
-                <Link to='/trip'><a class="navbarlink">End</a></Link>
-                <Link to='/trip'><a class="navbarlink2">Trips Log</a></Link>
+            <div class="nav_content">
+                <Link to='/trip/start'><div class="nav_link">Start</div></Link>
+                <Link to='/trip/end'><div class="nav_link">End</div></Link>
+                <Link to='/trip'><div class="nav_link2">Trips Log</div></Link>
             </div>
         </div>
     )

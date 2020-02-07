@@ -1,32 +1,28 @@
-/* navbar-container is logo + navbar */
-
-.navbar-container {
+.nav_container {
     display: flex;
     align-items: center;
 }
   
-.navbar-container div {
+.nav_container div {
     padding: 2%;
 }
 
-.VWDS-logo {
+.nav_logo {
     width: 397px;
     height: auto;
 }
 
-.navbar {
+.nav_content {
     width: 100%;
-    height: 40px;
+    height: 30px;
     position: relative;
     text-align: center;
     float: right;
 }
-
-/* navbarlink is just "start" and "end" buttons */
  
-.navbarlink {
-    padding-top: 20px;
-    width: 35%;
+.nav_link {
+    padding-top: 25px;
+    width: 25%;
     height: 100%;
     float: left;
     color: rgb(162, 30, 77);
@@ -36,16 +32,14 @@
     border-radius: 3px;
 }
 
-.navbarlink:hover {
+.nav_link:hover {
     color: white;
     background-color: rgb(162, 30, 77);
 }
 
-/* navbarlink2 is just the "trips log" button, created separately because it's two words */
-
-.navbarlink2 {
+.nav_link2 {
     padding-top: 20px;
-    width: 35%;
+    width: 30%;
     height: 100%;
     float: left;
     color: rgb(162, 30, 77);
@@ -54,68 +48,57 @@
     border-width: 0.5px;
 }
 
-.navbarlink2:hover {
+.nav_link2:hover {
     color: white;
     background-color: rgb(162, 30, 77);
 }
 
-@media only screen and (min-width: 910px) {
-    .navbarlink {
-        width: 25%;
-    }
-    
-    .navbarlink2 {
-        width: 40%;
-    }
-}
-
-
 @media only screen and (max-width: 910px) {
-    .navbarlink {
+    .nav_link {
         width: 25%;
     }
     
-    .navbarlink2 {
-        width: 40%;
+    .nav_link2 {
+        width: 35%;
     }
 }
 
 @media only screen and (max-width: 768px) {
-    .VWDS-logo {
+    .nav_logo {
         width: 220px;
         height: auto;
     }
 
-    .navbar {
+    .nav_content {
         height: 25px;
     }
 
-    .navbarlink {
+    .nav_link {
         padding-top: 10px;
         width: 20%;
     }
 
-    .navbarlink2 {
+    .nav_link2 {
         padding-top: 10px;
         width: 40%;
     }
 }
 
 @media only screen and (max-width: 430px) {
-    .VWDS-logo {
+    .nav_logo {
         width: 120px;
         height: auto;
     }
-    .navbar {
+    .nav_content {
         height: 20px;
     }
 
-    .navbarlink {
+    .nav_link {
         padding-top: 5px;
         width: 20%;
     }
 
-    .navbarlink2 {
+    .nav_link2 {
         padding-top: 5px;
         width: 40%;
     }

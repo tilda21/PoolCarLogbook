@@ -5,7 +5,6 @@ import { Switch, Route } from "react-router-dom";
 import './App.css';
 import Navbar from './Navbar';
 import Booking from './Booking';
-import Footer from './Footer';
 import Trip from './Trip';
 import TripKm from './TripKm';
 import Homepage from './Homepage';
@@ -57,9 +56,6 @@ class App extends Component {
           <Route path='/booking' component={() => <Booking data={data} />} />
           <Route path='/tripkm' component={() => <TripKm data={data} />} />
         </Switch>       
-        
-
-        <Footer />
       </>
     );
   }

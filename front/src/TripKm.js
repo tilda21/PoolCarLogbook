@@ -1,14 +1,19 @@
 import React from 'react';
 import Button from './Button';
+import './tripkm.css';
 
 const TripKm = () => {
     return(
         <>
-            <h1>Title</h1>
-            <div>Destination: destination</div>
-            <div>Enter start Kms</div>
-            <input type="text"/>
-            <Button />
+            <h1 class="tripkm_title">Kilometers</h1>
+            <div class="tripkm_destination">Destination: destination</div>
+            <div class="tripkm_enterkm">Enter start Kms</div>
+            <div class="tripkm_input">
+                <input type="text"/>
+            </div>
+            <div class="tripkm_button">
+                <Button />
+            </div>
         </>
     )
 }

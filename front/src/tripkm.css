@@ -1,0 +1,36 @@
+.tripkm_title {
+    font-family: "VWAGTheSans-Bold.otf";
+    color:rgb(162, 30, 77);
+}
+
+.tripkm_destination, .tripkm_enterkm {
+    font-family: "VWAGTheSans-Bold.otf";
+    text-align: center;
+    color:rgb(76, 83, 86);
+}
+
+.tripkm_input {
+    margin-top: 2%;
+    margin-left: 44%;
+}
+
+.tripkm_button {
+    margin-top: 2%;
+    margin-left: 46.5%;
+}
+
+@media only screen and (max-width: 768px) {
+    .tripkm_input {
+        margin-left: 38%;
+    }
+}
+
+@media only screen and (max-width: 430px) {
+    .tripkm_input {
+        margin-left: 26%;
+    }
+    
+    .tripkm_button {
+        margin-left: 35%;
+    }
+}
