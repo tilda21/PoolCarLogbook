@@ -1,5 +1,10 @@
 const connection = require('./config');
 
+connection.query(`DROP TABLE records`,
+(err) => {
+    if (err) console.log(err);
+    console.log('table records droped');}
+);
 
 connection.query(`CREATE TABLE records
 (

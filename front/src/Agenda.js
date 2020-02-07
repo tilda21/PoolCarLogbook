@@ -15,7 +15,7 @@ const now = new Date();
 
 
 const items = [
-  {
+  /* {
    _id            :guid(),
     name          : 'Meeting , dev staff!',
     startDateTime : new Date(now.getFullYear(), now.getMonth(), now.getDate(), 10, 0),
@@ -29,7 +29,7 @@ const items = [
      endDateTime   : new Date(now.getFullYear(), now.getMonth(), now.getDate(), 12, 0),
      classes       : 'color-1 color-4'
    },
-  
+   */
 ];
 
 export default class Agenda extends Component {
@@ -114,9 +114,27 @@ export default class Agenda extends Component {
     this.setState({ items });
   }
 
+  handleFetch = (items) => {
+    console.log('estamos dentro da handleFetch e isto é o que recebemos: ', items);
+    fetch('http://localhost:5000/',
+      {
+        method: 'POST',
+        headers: new Headers({
+          'Content-Type': 'application/json'
+        }),
+        body: JSON.stringify(this.state),
+      })
+      .then(res => res.json());  
+    }
+
   addNewEvent = (items , newItems) => {
-    this.setState({ showModal:false, selected:[], items:items });
+    //console.log('items: ', items);
+    //console.log('newItems: ', newItems);
+ 
+    this.setState({ showModal:false, selected:[], items:newItems });
     this._closeModal();
+    
+    this.handleFetch(this.state.items);
   }
 
   editEvent = (items , item) => {
