@@ -14,28 +14,39 @@ Record.getAllRecords = (callback) => {
 
 
 //create new Booking - insert info in records table
-Record.postBooking = (recordInfo, callback) => {
+Record.postBooking = (recordInfo, car_plate, callback) => {
 	connection.query(
 		`INSERT INTO records (
 			start_date_time,
+			start_time,
 			end_date_time,
+			end_time,
 			destination,
 			driver_name,
 			car_plate
+<<<<<<< HEAD
 			) VALUES (?, ?, ?, ?, ?)`,
 		[
 		    recordInfo.start_date_time,
             recordInfo.end_date_time,
+=======
+			) VALUES (?, ?, ?, ?, ?, ?, ?, ?)`,
+		[
+			recordInfo.book_date,
+			recordInfo.start_date_time,
+			recordInfo.start_time,
+			recordInfo.end_date_time,
+            recordInfo.end_time,
+>>>>>>> 65482e7a42b7deeeaf279ad31b27fec1f193006b
             recordInfo.destination,
             recordInfo.driver_name,
-            recordInfo.car_plate
+            car_plate
 		],
 		(err, results, fields) => {
 			callback(err, results, fields);
 		}
 	);
 };
-
 
 
 //update start trip - insert info in records table

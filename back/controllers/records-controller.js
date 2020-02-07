@@ -15,8 +15,24 @@ const getRecords = (req, res) => {
 };
 
 const postBooking = (req, res) => {
-	//console.log(req.body.book_date);
-	Record.postBooking(req.body, (err, results) => {
+	//console.log(req.body.items[0].startDateTime.split('T').slice(0)[1].split('.').slice(0));
+	/* book_date,
+	start_date_time,
+	start_time,
+	end_date_time,
+	end_time, */
+	const info = {
+		book_date: req.body.items[0].startDateTime.split('T').slice(0)[0],
+		start_date_time: req.body.items[0].startDateTime.split('T').slice(0)[0],
+		start_time: req.body.items[0].startDateTime.split('T').slice(0)[1].split('.').slice(0)[0],
+		end_date_time: req.body.items[0].endDateTime.split('T').slice(0)[0],
+		end_time: req.body.items[0].endDateTime.split('T').slice(0)[1].split('.').slice(0)[0],
+		destination: 'IKEA',
+		driver_name: 'Inês'
+	};
+	//console.log(info);
+	const car_plate = '72-VZ-96';
+	Record.postBooking(info, car_plate, (err, results) => {
 		if(err) {
 			console.log(err)
 			res.status(500).json({ message: 'Error posting this booking' });
@@ -28,6 +44,8 @@ const postBooking = (req, res) => {
 };
 
 const updateBooking = (req, res) => {
+	console.log(req.body.id)
+	console.log(req.body.start_km)
     if(req.body.start_km){
         console.log('We are updating start_km');
         Record.updateStartTrip(req.body, (err, results) => {

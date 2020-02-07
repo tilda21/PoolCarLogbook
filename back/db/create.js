@@ -2,12 +2,18 @@ const connection = require('./config');
 
 connection.query(`DROP TABLE records`,
 (err) => {
+<<<<<<< HEAD
 	if (err) console.log(err);
     console.log('table records droped');
    
 }
 );
 
+=======
+    if (err) console.log(err);
+    console.log('table records droped');}
+);
+>>>>>>> 65482e7a42b7deeeaf279ad31b27fec1f193006b
 
 connection.query(`CREATE TABLE records(
     id INTEGER PRIMARY KEY AUTO_INCREMENT,

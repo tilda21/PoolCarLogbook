@@ -1,12 +1,11 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import TripCard from './TripCard';
 import './triplog.css';
 
 const Trip = (props) => {
 
     const data = props.data;
-    console.log('this is the props recieved in Trip', props);
+    //console.log('this is the props recieved in Trip', props);
     
 
     return(
@@ -17,9 +16,10 @@ const Trip = (props) => {
                     <select name="driver" id="driver">
                         <option value="driver">driver</option>
                     </select>
-                    <Link to='/tripkm'>Trip Km</Link>
                 </div>
-                { data.map(trip => <TripCard trip={trip} />) }
+                { 
+                    data.map(trip => <TripCard trip={trip} key={trip.id} />) 
+                }
             </div>
         </>
     )
