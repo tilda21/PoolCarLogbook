@@ -28,6 +28,8 @@ const postBooking = (req, res) => {
 };
 
 const updateBooking = (req, res) => {
+	console.log(req.body.id)
+	console.log(req.body.start_km)
     if(req.body.start_km){
         console.log('We are updating start_km');
         Record.updateStartTrip(req.body, (err, results) => {
