@@ -16,6 +16,7 @@ select {
     border: none;
     width: 100%;
     background: white;
+    font-family: "VWAGTheSans-Light.otf";
     color: rgb(162, 30, 77)
 }
 
@@ -40,6 +41,7 @@ button {
     border: 2px solid rgb(162, 30, 77);
     color: rgb(162, 30, 77);
     padding: 12px 30px;
+    font-family: "VWAGTheSans-Light.otf";
     text-align: center;
     text-decoration: none;
     display: inline-block;

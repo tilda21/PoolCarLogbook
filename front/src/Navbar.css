@@ -25,6 +25,7 @@
     width: 25%;
     height: 100%;
     float: left;
+    font-family: "VWAGTheSans-Light.otf";   
     color: rgb(162, 30, 77);
     background-color: white;
     border-style: solid;
@@ -37,6 +38,7 @@
     width: 30%;
     height: 100%;
     float: left;
+    font-family: "VWAGTheSans-Light.otf";
     color: rgb(162, 30, 77);
     background-color: white;
     border-style: solid;
