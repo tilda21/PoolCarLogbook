@@ -1,10 +1,13 @@
 import React from 'react';
 import Moment from 'react-moment';
 import Button from './Button';
+import { Link } from "react-router-dom";
+
 import './triplog.css';
 
 const TripCard = ({ trip }) => {
     //console.log(trip);
+
     return(
         <div class="triplog_card">
             <div class="triplog_driver_info">

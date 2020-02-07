@@ -1,11 +1,11 @@
 import React, { Component } from 'react';
 import moment from 'moment';
-import { ReactAgenda , ReactAgendaCtrl, guid , getUnique , getLast , getFirst , Modal } from 'react-agenda';
+import { ReactAgenda, ReactAgendaCtrl, guid, Modal } from 'react-agenda';
 
-var now = new Date();
+const now = new Date();
 
 
-    var colors= {
+    const colors= {
       'color-1':"rgba(102, 195, 131 , 1)" ,
       "color-2":"rgba(242, 177, 52, 1)" ,
       "color-3":"rgba(235, 85, 59, 1)" ,
@@ -14,8 +14,8 @@ var now = new Date();
     }
 
 
-var items = [
-  {
+const items = [
+  /* {
    _id            :guid(),
     name          : 'Meeting , dev staff!',
     startDateTime : new Date(now.getFullYear(), now.getMonth(), now.getDate(), 10, 0),
@@ -29,132 +29,122 @@ var items = [
      endDateTime   : new Date(now.getFullYear(), now.getMonth(), now.getDate(), 12, 0),
      classes       : 'color-1 color-4'
    },
-  
+   */
 ];
 
 export default class Agenda extends Component {
   constructor(props){
-  super(props);
-this.state = {
-  items: [],
-  selected:[],
-  cellHeight:(60 / 4),
-  showModal:false,
-  rowsPerHour:1,
-  numberOfDays:1,
-  startDate: new Date()
-}
-this.handleRangeSelection = this.handleRangeSelection.bind(this)
-this.handleItemEdit = this.handleItemEdit.bind(this)
-this.zoomIn = this.zoomIn.bind(this)
-this.zoomOut = this.zoomOut.bind(this)
-this._openModal = this._openModal.bind(this)
-this._closeModal = this._closeModal.bind(this)
-this.addNewEvent = this.addNewEvent.bind(this)
-this.removeEvent = this.removeEvent.bind(this)
-this.editEvent = this.editEvent.bind(this)
-this.changeView = this.changeView.bind(this)
-this.handleCellSelection = this.handleCellSelection.bind(this)
-
+    super(props);
+    this.state = {
+      items:[],
+      selected:[],
+      cellHeight:(60 / 4),
+      showModal:false,
+      locale:"fr",
+      rowsPerHour:1,
+      numberOfDays:1,
+      startDate: new Date()
+    }
   }
 
   componentDidMount(){
-
-    this.setState({items:items})
-
-
+    this.setState({ items })
   }
 
-
-componentWillReceiveProps(next , last){
-  if(next.items){
-
-    this.setState({items:next.items})
+  componentWillReceiveProps(next , last){
+    if(next.items){
+      this.setState({ items: next.items })
+    }
   }
-}
-  handleItemEdit(item, openModal) {
 
+  handleItemEdit = (item, openModal) => {
     if(item && openModal === true){
-      this.setState({selected:[item] })
+      this.setState({ selected:[item] })
       return this._openModal();
     }
-
-
-
   }
-  handleCellSelection(item, openModal) {
 
+  handleCellSelection = (item, openModal) => {
     if(this.state.selected && this.state.selected[0] === item){
-      return  this._openModal();
+      return this._openModal();
     }
-       this.setState({selected:[item] })
-
+      this.setState({ selected:[item] })
   }
 
-  zoomIn(){
-var num = this.state.cellHeight + 15
-    this.setState({cellHeight:num})
-  }
-  zoomOut(){
-var num = this.state.cellHeight - 15
-    this.setState({cellHeight:num})
+  zoomIn = () => {
+    const num = this.state.cellHeight + 15
+    this.setState({ cellHeight:num })
   }
 
-
-  handleDateRangeChange (startDate, endDate) {
-      this.setState({startDate:startDate })
-
+  zoomOut = () => {
+    const num = this.state.cellHeight - 15
+    this.setState({ cellHeight:num })
   }
 
-  handleRangeSelection (selected) {
 
-
-this.setState({selected:selected , showCtrl:true})
-this._openModal();
-
-}
-
-_openModal(){
-  this.setState({showModal:true})
-}
-_closeModal(e){
-  if(e){
-    e.stopPropagation();
-    e.preventDefault();
+  handleDateRangeChange = (startDate, endDate) => {
+    this.setState({ startDate })
   }
-    this.setState({showModal:false})
-}
 
-handleItemChange(items , item){
+  handleRangeSelection = (selected) => {
+    this.setState({ selected:selected, showCtrl:true })
+    this._openModal();
+  }
 
-this.setState({items:items})
-}
+  _openModal = () => {
+    this.setState({ showModal:true })
+  }
+  _closeModal = (e) =>{
+    if(e){
+      e.stopPropagation();
+      e.preventDefault();
+    }
+    this.setState({ showModal:false })
+  }
 
-handleItemSize(items , item){
+  handleItemChange = (items , item) => {
+    this.setState({ items })
+  }
 
-  this.setState({items:items})
+  handleItemSize = (items , item) => {
+    this.setState({ items })
+  }
 
-}
+  removeEvent = (items , item) => {
+    this.setState({ items });
+  }
 
-removeEvent(items , item){
+  handleFetch = (items) => {
+    console.log('estamos dentro da handleFetch e isto é o que recebemos: ', items);
+    fetch('http://localhost:5000/',
+      {
+        method: 'POST',
+        headers: new Headers({
+          'Content-Type': 'application/json'
+        }),
+        body: JSON.stringify(this.state),
+      })
+      .then(res => res.json());  
+    }
 
-    this.setState({ items:items});
-}
+  addNewEvent = (items , newItems) => {
+    //console.log('items: ', items);
+    //console.log('newItems: ', newItems);
+ 
+    this.setState({ showModal:false, selected:[], items:newItems });
+    this._closeModal();
+    
+    this.handleFetch(this.state.items);
+  }
 
-addNewEvent (items , newItems){
+  editEvent = (items , item) => {
+    this.setState({ showModal:false, selected:[], items });
+    this._closeModal();
+  }
 
-  this.setState({showModal:false ,selected:[] , items:items});
-  this._closeModal();
-}
-editEvent (items , item){
-
-  this.setState({showModal:false ,selected:[] , items:items});
-  this._closeModal();
-}
-
-changeView (days , event ){
-this.setState({numberOfDays:days})
-}
+  changeView = (days , event ) => {
+    this.setState({ numberOfDays:days })
+  }
 
 
   render() {
@@ -184,7 +174,8 @@ this.setState({numberOfDays:days})
           startAtTime={8}
           endAtTime={23}
           cellHeight={this.state.cellHeight}
-          items={this.state.items}
+          locale="fr"
+          items={this.props.data}
           numberOfDays={this.state.numberOfDays}
           headFormat={"ddd DD MMM"}
           rowsPerHour={this.state.rowsPerHour}

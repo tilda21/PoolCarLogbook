@@ -1,9 +1,13 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './triplog.css';
+
 
 const Button = () => {
     return(
-        <button>Button</button>
+        <button>
+            Save
+        </button>
     )
 }
 

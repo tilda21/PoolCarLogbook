@@ -2,10 +2,10 @@ import React from 'react';
 import Agenda from './Agenda';
 import './booking.css';
 
-const Booking = () => {
+const Booking = ({ data }) => {
     return (
         <div class='booking_container'>
-            <h1 cla="booking_title">CAR POOL BOOKING</h1>
+            <h1 class="booking_title">CAR POOL BOOKING</h1>
             <div class="booking_subtitle">Calendar</div>
             <Agenda/>
             <div class="booking_"> 
