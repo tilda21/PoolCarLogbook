@@ -9,11 +9,17 @@ import Trip from './Trip';
 import TripKm from './TripKm';
 import Homepage from './Homepage';
 
+//the data and details are the information coming from the database, 
+//the data is the information that is going to be used in the agenda for the bookings and the listing of trips
+//and the details is the rest of the information that we need from the database
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: [] };
+    this.state = { 
+      data: [],
+      details: []
+    };
   }
 
   componentDidMount() {
@@ -24,7 +30,7 @@ class App extends Component {
     fetch('http://localhost:5000/')
       .then(res => res.json())
       .then(data => {
-        //console.log(data);
+        //console.log('fetch', data);
         const items = data.map(el => 
          ({
           _id: el.id,
@@ -35,15 +41,25 @@ class App extends Component {
           start_time: el.start_time,
           end_time: el.end_time
         }))
-        this.setState({ data: items })
-        }
-      )
+        const details = data.map(element => ({
+          driver_name: element.driver_name,
+          destination: element.destination,
+          car_plate: element.car_plate,
+          end_km: element.end_km,
+          start_km: element.start_km
+
+        }))
+        this.setState({ 
+          data: items,
+          details: details 
+        });
+      })
   }
   
   render() {
     
-    const { data } = this.state;
-    //console.log('estamos a fazer render: ', data)
+    const { data, details } = this.state;
+    console.log('estamos a fazer render: ', details)
     const dataStart = [];
     const dataEnd = [];
 
