@@ -6,7 +6,7 @@ const TripKm = (props) => {
     const [km, setKm] = useState(0);
     const [stageMoment, setStageMoment] = useState('');
 
-    //console.log(props);
+    console.log('TripKm props: ', props);
     const id = props.id;
     const data = props.data;
     const trip = data.find(element => element.id === +id);
@@ -18,6 +18,8 @@ const TripKm = (props) => {
         stage = 'start';
     } else if(startkm && !endkm){
         stage = 'end';
+    } else {
+        stage = 'crash'
     }
     const updateKm = (e) => {
         console.log('name ', e.target.name);
@@ -55,7 +57,7 @@ const TripKm = (props) => {
                 }) // We send data in JSON format
             }
         }
-        console.log(putMethod)
+        console.log('putMethod: ', putMethod)
           
         fetch(url, putMethod)
         .then(response => response.json())
