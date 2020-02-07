@@ -32,11 +32,6 @@
     border-radius: 3px;
 }
 
-.nav_link:hover {
-    color: white;
-    background-color: rgb(162, 30, 77);
-}
-
 .nav_link2 {
     padding-top: 20px;
     width: 30%;
@@ -48,7 +43,7 @@
     border-width: 0.5px;
 }
 
-.nav_link2:hover {
+.nav_link:hover, .nav_link2:hover {
     color: white;
     background-color: rgb(162, 30, 77);
 }

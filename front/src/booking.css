@@ -3,12 +3,7 @@
     color:rgb(162, 30, 77);
 }
 
-.booking_subtitle {
-    font-family: "VWAGTheSans-Bold.otf";
-    color:rgb(76, 83, 86);
-}
-
-.booking_label {
+.booking_subtitle, .booking_label {
     font-family: "VWAGTheSans-Bold.otf";
     color:rgb(76, 83, 86);
 }

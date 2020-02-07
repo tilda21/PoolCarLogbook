@@ -38,31 +38,7 @@ select {
     border-width: 1px;
 }
 
-.triplog_driver_bold {
-    float: left;
-    font-weight: 700;
-    color: rgb(162, 30, 77);
-}
-
-.triplog_reservation_bold {
-    float: left;
-    font-weight: 700;
-    color: rgb(162, 30, 77);
-}
-
-.triplog_destination_bold {
-    float: left;
-    font-weight: 700;
-    color: rgb(162, 30, 77);
-}
-
-.triplog_start_bold {
-    float: left;
-    font-weight: 700;
-    color: rgb(162, 30, 77);
-}
-
-.triplog_end_bold {
+.triplog_driver_bold, .triplog_reservation_bold, .triplog_destination_bold, .triplog_start_bold, .triplog_end_bold {
     float: left;
     font-weight: 700;
     color: rgb(162, 30, 77);
