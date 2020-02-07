@@ -154,17 +154,17 @@ export default class Agenda extends Component {
       return <div style={{display:'block', position:'absolute' , background:'#FFF'}}>{props.item.name} <button onClick={()=> props.edit(props.item)}>Edit </button></div>
     }
     return (
+      
+      <div className="content-expanded ">
 
-      <div class="content-expanded ">
-
-        <div class="control-buttons">
-          <button  class="button-control" onClick={this.zoomIn}> <i class="zoom-plus-icon"></i> </button>
-          <button  class="button-control" onClick={this.zoomOut}> <i class="zoom-minus-icon"></i> </button>
-          <button  class="button-control" onClick={this._openModal}> <i class="schedule-icon"></i> </button>
-          <button  class="button-control" onClick={this.changeView.bind(null , 7)}> {moment.duration(7, "days").humanize()}  </button>
-          <button  class="button-control" onClick={this.changeView.bind(null , 5)}> {moment.duration(5, "days").humanize()}  </button>
-          <button  class="button-control" onClick={this.changeView.bind(null , 3)}> {moment.duration(3, "days").humanize()}  </button>
-          <button  class="button-control" onClick={this.changeView.bind(null , 1)}> {moment.duration(1, "day").humanize()} </button>
+        <div className="control-buttons">
+          <button  className="button-control" onClick={this.zoomIn}> <i className="zoom-plus-icon"></i> </button>
+          <button  className="button-control" onClick={this.zoomOut}> <i className="zoom-minus-icon"></i> </button>
+          <button  className="button-control" onClick={this._openModal}> <i className="schedule-icon"></i> </button>
+          <button  className="button-control" onClick={this.changeView.bind(null , 7)}> {moment.duration(7, "days").humanize()}  </button>
+          <button  className="button-control" onClick={this.changeView.bind(null , 5)}> {moment.duration(5, "days").humanize()}  </button>
+          <button  className="button-control" onClick={this.changeView.bind(null , 3)}> {moment.duration(3, "days").humanize()}  </button>
+          <button  className="button-control" onClick={this.changeView.bind(null , 1)}> {moment.duration(1, "day").humanize()} </button>
         </div>
 
         <ReactAgenda
@@ -194,7 +194,7 @@ export default class Agenda extends Component {
           onDateRangeChange={this.handleDateRangeChange.bind(this)} />
         {
           this.state.showModal? <Modal clickOutside={this._closeModal} >
-          <div class="modal-content">
+          <div className="modal-content">
              <ReactAgendaCtrl items={this.state.items} itemColors={colors} selectedCells={this.state.selected} Addnew={this.addNewEvent} edit={this.editEvent}  />
 
           </div>

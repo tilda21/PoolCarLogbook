@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from "react-router-dom";
 import TripCard from './TripCard';
 import './triplog.css';
 
@@ -12,16 +13,12 @@ const Trip = (props) => {
         <>
             <h1 class="triplog_title">Select your trip/Trips log</h1>
             <div class="triplog_content">
-                <div class="triplog_select_km">
-                    <div class="triplog_select">
-                        <select name="driver" id="driver">
-                            <option value="driver">driver</option>
-                        </select>
-                    </div>
-                    <div class="triplog_km">
-                        <Link to='/tripkm'>Trip Km</Link>
-                    </div>
+                <div class="triplog_select">
+                    <select name="driver" id="driver">
+                        <option value="driver">driver</option>
+                    </select>
                 </div>
+                    <Link to='/tripkm'>Trip Km</Link>
                 { 
                     data.map(trip => <TripCard trip={trip} key={trip.id} />) 
                 }

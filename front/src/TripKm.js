@@ -68,25 +68,15 @@ const TripKm = (props) => {
 
     return(
         <>
-            <h1 class="tripkm_title">
-                Start Trip
-            </h1>
-            <div class="tripkm_destination">
-                Destination: destination
-            </div>
-                <form onSubmit={handleSubmit}>
-                    <div class="tripkm_enterkm">
-                        Enter {stage} Kms
-                    </div>
-                    <div class="tripkm_input">
-                        <input type="text" value={km} name={`${stage}_km`} onChange={updateKm}/>
-                    </div>
-                    <div class="tripkm_button">
-                        <Button type='submit'>
-                            Save
-                        </Button>
-                    </div>     
-                </form>
+            <h1 class="tripkm_title">Start Trip</h1>
+            <div class="tripkm_destination">Destination: destination</div>
+            <form onSubmit={handleSubmit}>
+                <div class="tripkm_enterkm">Enter {stage} Kms</div>
+                <input type="text" value={km} name={`${stage}_km`} onChange={updateKm}/>
+                    <Button type='submit' class="tripkm_button">
+                        Save
+                    </Button>     
+            </form>
             
         </>
     )

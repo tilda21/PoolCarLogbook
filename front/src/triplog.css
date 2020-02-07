@@ -3,11 +3,6 @@
     color:rgb(162, 30, 77);
 }
 
-.triplog_select_km {
-    max-width: 200px;
-    margin: auto;
-}
-
 .triplog_select {
     border: 1px solid rgb(76, 83, 86);
     padding: 5px;
@@ -22,10 +17,6 @@ select {
     width: 100%;
     background: white;
     color: rgb(162, 30, 77)
-}
-
-.triplog_km {
-    padding-top: 5px;
 }
 
 .triplog_card {
