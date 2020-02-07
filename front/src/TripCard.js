@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import './triplog.css';
 
 const TripCard = ({ trip }) => {
-    console.log(trip);
+    //console.log(trip);
 
     return(
         <>
@@ -50,7 +50,9 @@ const TripCard = ({ trip }) => {
                     {trip.car_plate}
                 </div>
 
-                <Button />
+                <button>
+                    <Link to={`/tripkm/${trip.id}`} >Go</Link>
+                </button>
             </div>
         </>
     )

@@ -5,7 +5,7 @@ import './triplog.css';
 const Trip = (props) => {
 
     const details = props.details;
-    console.log('this is the props recieved in Trip', props);
+    //console.log('this is the props recieved in Trip', props);
     
     return(
         <>

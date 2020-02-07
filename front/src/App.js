@@ -41,6 +41,7 @@ class App extends Component {
           end_time: el.end_time
         }))
         const details = data.map(element => ({
+          id: element.id,
           driver_name: element.driver_name,
           destination: element.destination,
           car_plate: element.car_plate,
@@ -65,16 +66,16 @@ class App extends Component {
 
     let verification = (i) => {
       
-      const startkm = data[i].start_km;
-      const endkm = data[i].end_km;
+      const startkm = details[i].start_km;
+      const endkm = details[i].end_km;
       if(!startkm){
-        dataStart[i] = data[i];
+        dataStart[i] = details[i];
       }else if(startkm && !endkm){
-        dataEnd[i] = data[i];
+        dataEnd[i] = details[i];
       }
     }
     
-    for (let i=0; i < data.length; i++) {
+    for (let i=0; i < details.length; i++) {
       verification(i);
     }
     //console.log(dataStart);
@@ -83,16 +84,18 @@ class App extends Component {
         <Navbar />
         <Switch>
           <Route exact path='/' component={() => <Homepage data={data} />} />
-          <Route path='/trip/start' component={() => <Trip details={details}/>} />
-          <Route path='/trip/end' component={() => <Trip details={details}/>} />
+          <Route path='/trip/start' component={() => <Trip details={dataStart}/>} />
+          <Route path='/trip/end' component={() => <Trip details={dataEnd}/>} />
           <Route path='/trip' component={() => <Trip details={details}/>} />
           <Route path='/booking' component={() => <Booking data={data} />} />
           <Route 
             path='/tripkm/:id' 
             render={
               (props) => {
+                /* console.log('match params: ', props)
+                console.log(details); */
                 const id = props.match.params.id;
-                return <TripKm data={data} id={id} />
+                return <TripKm data={details} id={id} />
               }
             }
           />
