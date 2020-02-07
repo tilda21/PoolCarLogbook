@@ -1,4 +1,3 @@
-
 import React, {Component} from 'react';
 import { Switch, Route } from "react-router-dom";
 import './App.css';
@@ -46,8 +45,9 @@ class App extends Component {
           destination: element.destination,
           car_plate: element.car_plate,
           end_km: element.end_km,
-          start_km: element.start_km
-
+          start_km: element.start_km,
+          end_time: element.end_time,
+          start_time: element.start_time
         }))
         this.setState({ 
           data: items,
@@ -83,9 +83,9 @@ class App extends Component {
         <Navbar />
         <Switch>
           <Route exact path='/' component={() => <Homepage data={data} />} />
-          <Route path='/trip/start' component={() => <Trip data={dataStart} />} />
-          <Route path='/trip/end' component={() => <Trip data={dataEnd} />} />
-          <Route path='/trip' component={() => <Trip data={data} />} />
+          <Route path='/trip/start' component={() => <Trip details={details}/>} />
+          <Route path='/trip/end' component={() => <Trip details={details}/>} />
+          <Route path='/trip' component={() => <Trip details={details}/>} />
           <Route path='/booking' component={() => <Booking data={data} />} />
           <Route 
             path='/tripkm/:id' 

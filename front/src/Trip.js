@@ -4,10 +4,9 @@ import './triplog.css';
 
 const Trip = (props) => {
 
-    const data = props.data;
-    //console.log('this is the props recieved in Trip', props);
+    const details = props.details;
+    console.log('this is the props recieved in Trip', props);
     
-
     return(
         <>
             <h1 class="triplog_title">Select your trip/Trips log</h1>
@@ -18,7 +17,7 @@ const Trip = (props) => {
                     </select>
                 </div>
                 { 
-                    data.map(trip => <TripCard trip={trip} key={trip.id} />) 
+                    details.map(trip => <TripCard trip={trip} key={trip.id} />) 
                 }
             </div>
         </>
