@@ -4,11 +4,11 @@ import Button from './Button';
 import './triplog.css';
 
 const TripCard = ({ trip }) => {
-    //console.log(trip);
-    return(
+    console.log(trip);
+    return (
         <div className="triplog_card">
             <div className="triplog_driver_info">
-                <div className="triplog_driver_bold">
+               <div className="triplog_driver_bold">
                     Driver:
                 </div>
                 {trip.driver_name}
@@ -16,14 +16,14 @@ const TripCard = ({ trip }) => {
             <div className="triplog_reservation_info">
                 <div className="triplog_reservation_bold">
                     Reservation date:
-                </div> 
+                </div>
                 <Moment format='DD/MMM/YYYY'>
-                    {trip.book_date}
+                    {trip.start_date_time}
                 </Moment>
             </div>
             <div className="triplog_destination_info">
-                <div className="triplog_destination_bold">    
-                    Destination: 
+                <div className="triplog_destination_bold">
+                    Destination:
                 </div>
                 {trip.destination}
             </div>

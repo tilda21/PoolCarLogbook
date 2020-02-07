@@ -40,7 +40,6 @@ export default class Agenda extends Component {
       selected:[],
       cellHeight:(60 / 4),
       showModal:false,
-      locale:"fr",
       rowsPerHour:1,
       numberOfDays:1,
       startDate: new Date()
@@ -57,6 +56,20 @@ export default class Agenda extends Component {
     }
   }
 
+
+  handlefetch = (items) => {
+    fetch('http://localhost:5000/',
+      {
+        method: 'POST',
+        headers: new Headers({
+          'Content-Type': 'application/json'
+        }),
+        body: JSON.stringify(this.state),       
+      })
+      .then(res => res.json());         
+                  
+  }
+
   handleItemEdit = (item, openModal) => {
     if(item && openModal === true){
       this.setState({ selected:[item] })
@@ -68,7 +81,7 @@ export default class Agenda extends Component {
     if(this.state.selected && this.state.selected[0] === item){
       return this._openModal();
     }
-      this.setState({ selected:[item] })
+    this.setState({ selected: [item] })
   }
 
   zoomIn = () => {
@@ -87,7 +100,7 @@ export default class Agenda extends Component {
   }
 
   handleRangeSelection = (selected) => {
-    this.setState({ selected:selected, showCtrl:true })
+    this.setState({ selected: selected, showCtrl: true })
     this._openModal();
   }
 
@@ -107,16 +120,21 @@ export default class Agenda extends Component {
   }
 
   handleItemSize = (items , item) => {
-    this.setState({ items })
+    this.setState({ items })   
   }
 
   removeEvent = (items , item) => {
-    this.setState({ items });
+    this.setState({ items });   
   }
 
-  addNewEvent = (items , newItems) => {
-    this.setState({ showModal:false, selected:[], items:items });
+  addNewEvent = (items, newItems) => {
+ 
+    console.log(newItems);
+    this.setState({ showModal: false, selected: [], items: items });   
+    this.handlefetch(this.state.items);
     this._closeModal();
+   
+
   }
 
   editEvent = (items , item) => {
@@ -130,7 +148,7 @@ export default class Agenda extends Component {
 
 
   render() {
-    
+    console.log('heloooo',this.state.items);
     var AgendaItem = function(props){
       
       return <div style={{display:'block', position:'absolute' , background:'#FFF'}}>{props.item.name} <button onClick={()=> props.edit(props.item)}>Edit </button></div>
@@ -156,7 +174,6 @@ export default class Agenda extends Component {
           startAtTime={8}
           endAtTime={23}
           cellHeight={this.state.cellHeight}
-          locale="fr"
           items={this.props.data}
           numberOfDays={this.state.numberOfDays}
           headFormat={"ddd DD MMM"}

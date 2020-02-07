@@ -30,7 +30,9 @@ class App extends Component {
           name: el.driver_name,
           startDateTime: new Date(el.start_date_time.split('00:00:00').join(el.start_time)),
           endDateTime: new Date(el.end_date_time.split('00:00:00').join(el.end_time)),
-          classes: 'red'
+          classes: 'color-5',
+          start_time: el.start_time,
+          end_time: el.end_time
         }))
         this.setState({ data: items })
         }
