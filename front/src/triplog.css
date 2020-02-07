@@ -6,9 +6,10 @@
 .triplog_select {
     border: 1px solid rgb(76, 83, 86);
     padding: 5px;
-    width: 50%;
+    width: 10%;
     float: left;
-    margin-right: 10px
+    margin-right: 10px;
+    margin-left: 40%
 }
 
 select {
