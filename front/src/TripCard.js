@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import './triplog.css';
 
 const TripCard = ({ trip }) => {
-    //console.log(trip);
+    console.log(trip);
 
     return(
         <div className="triplog_card">
