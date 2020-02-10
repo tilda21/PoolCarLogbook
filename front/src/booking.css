@@ -14,7 +14,7 @@
 }
 
 /* changes to the agenda's CSS */
-/*.agenda__cell.--time {
+.agenda__cell.--time {
     font-family: "VWAGTheSans-Bold.otf";
     color:rgb(76, 83, 86);
 }
@@ -30,4 +30,4 @@
 
 .agenda__cell.--head {
     color: rgb(95, 25, 57);
-} */
+}

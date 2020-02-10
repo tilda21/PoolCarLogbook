@@ -1,4 +1,3 @@
-
 import React, {Component} from 'react';
 import { Switch, Route } from "react-router-dom";
 import './App.css';
@@ -9,11 +8,17 @@ import Trip from './Trip';
 import TripKm from './TripKm';
 import Homepage from './Homepage';
 
+//the data and details are the information coming from the database, 
+//the data is the information that is going to be used in the agenda for the bookings and the listing of trips
+//and the details is the rest of the information that we need from the database
 
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: [] };
+    this.state = { 
+      data: [],
+      details: []
+    };
   }
 
   componentDidMount() {
@@ -24,7 +29,7 @@ class App extends Component {
     fetch('http://localhost:5000/')
       .then(res => res.json())
       .then(data => {
-        //console.log(data);
+        //console.log('fetch', data);
         const items = data.map(el => 
          ({
           _id: el.id,
@@ -35,30 +40,42 @@ class App extends Component {
           start_time: el.start_time,
           end_time: el.end_time
         }))
-        this.setState({ data: items })
-        }
-      )
+        const details = data.map(element => ({
+          id: element.id,
+          driver_name: element.driver_name,
+          destination: element.destination,
+          car_plate: element.car_plate,
+          end_km: element.end_km,
+          start_km: element.start_km,
+          end_time: element.end_time,
+          start_time: element.start_time
+        }))
+        this.setState({ 
+          data: items,
+          details: details 
+        });
+      })
   }
   
   render() {
     
-    const { data } = this.state;
-    //console.log('estamos a fazer render: ', data)
+    const { data, details } = this.state;
+    console.log('estamos a fazer render: ', details)
     const dataStart = [];
     const dataEnd = [];
 
     let verification = (i) => {
       
-      const startkm = data[i].start_km;
-      const endkm = data[i].end_km;
+      const startkm = details[i].start_km;
+      const endkm = details[i].end_km;
       if(!startkm){
-        dataStart[i] = data[i];
+        dataStart[i] = details[i];
       }else if(startkm && !endkm){
-        dataEnd[i] = data[i];
+        dataEnd[i] = details[i];
       }
     }
     
-    for (let i=0; i < data.length; i++) {
+    for (let i=0; i < details.length; i++) {
       verification(i);
     }
     //console.log(dataStart);
@@ -67,16 +84,18 @@ class App extends Component {
         <Navbar />
         <Switch>
           <Route exact path='/' component={() => <Homepage data={data} />} />
-          <Route path='/trip/start' component={() => <Trip data={dataStart} />} />
-          <Route path='/trip/end' component={() => <Trip data={dataEnd} />} />
-          <Route path='/trip' component={() => <Trip data={data} />} />
+          <Route path='/trip/start' component={() => <Trip details={dataStart}/>} />
+          <Route path='/trip/end' component={() => <Trip details={dataEnd}/>} />
+          <Route path='/trip' component={() => <Trip details={details}/>} />
           <Route path='/booking' component={() => <Booking data={data} />} />
           <Route 
             path='/tripkm/:id' 
             render={
               (props) => {
+                /* console.log('match params: ', props)
+                console.log(details); */
                 const id = props.match.params.id;
-                return <TripKm data={data} id={id} />
+                return <TripKm data={details} id={id} />
               }
             }
           />

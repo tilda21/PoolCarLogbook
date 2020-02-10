@@ -138,7 +138,7 @@ export default class Agenda extends Component {
 
 =======
   handleFetch = (items) => {
-    console.log('estamos dentro da handleFetch e isto é o que recebemos: ', items);
+    //console.log('estamos dentro da handleFetch e isto é o que recebemos: ', items);
     fetch('http://localhost:5000/',
       {
         method: 'POST',
@@ -221,11 +221,11 @@ export default class Agenda extends Component {
              <ReactAgendaCtrl items={this.state.items} itemColors={colors} selectedCells={this.state.selected} Addnew={this.addNewEvent} edit={this.editEvent}  />
 
           </div>
-   </Modal>:''
-}
+          </Modal>:''
+        }
 
 
-       </div>
+      </div>
 
     );
   }
