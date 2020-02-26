@@ -34,7 +34,7 @@ const TripKm = (props) => {
         
         const url = 'http://localhost:5000/';
         let putMethod = {};
-        if(stageMoment=='start_km'){
+        if(stageMoment==='start_km'){
             putMethod = {
                 method: 'PUT', // Method itself
                 headers: {
