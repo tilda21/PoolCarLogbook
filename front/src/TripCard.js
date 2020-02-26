@@ -1,6 +1,6 @@
 import React from 'react';
 import Moment from 'react-moment';
-import Button from './Button';
+// import Button from './Button';
 import { Link } from "react-router-dom";
 
 import './triplog.css';
