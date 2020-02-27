@@ -5,13 +5,9 @@ import { ReactAgenda, ReactAgendaCtrl, Modal } from 'react-agenda';
 const now = new Date();
 
 
-    const colors= {
-      'color-1':"rgba(102, 195, 131 , 1)" ,
-      "color-2":"rgba(242, 177, 52, 1)" ,
-      "color-3":"rgba(235, 85, 59, 1)" ,
-      "color-4":"rgba(70, 159, 213, 1)",
-      "color-5":"rgba(170, 59, 123, 1)"
-    }
+    const colors={ "color-5":"rgba(170, 59, 123, 1)"} 
+ 
+    
 
 
 const items = [
@@ -40,7 +36,6 @@ export default class Agenda extends Component {
       selected:[],
       cellHeight:(60 / 4),
       showModal:false,
-      locale:"fr",
       rowsPerHour:1,
       numberOfDays:1,
       startDate: new Date()
@@ -115,7 +110,7 @@ export default class Agenda extends Component {
   }
 
   handleFetch = (items) => {
-    //console.log('estamos dentro da handleFetch e isto é o que recebemos: ', items);
+    console.log('estamos dentro da handleFetch e isto é o que recebemos: ', items);
     fetch('http://localhost:5000/',
       {
         method: 'POST',
@@ -192,14 +187,14 @@ export default class Agenda extends Component {
           onCellSelect={this.handleCellSelection.bind(this)}
           onItemRemove={this.removeEvent.bind(this)}
           onDateRangeChange={this.handleDateRangeChange.bind(this)} />
-        {
-          this.state.showModal? <Modal clickOutside={this._closeModal} >
-          <div className="modal-content">
-             <ReactAgendaCtrl items={this.state.items} itemColors={colors} selectedCells={this.state.selected} Addnew={this.addNewEvent} edit={this.editEvent}  />
+            {
+              this.state.showModal? <Modal clickOutside={this._closeModal} >
+              <div className="modal-content">
+                <ReactAgendaCtrl items={this.state.items} itemColors={colors} selectedCells={this.state.selected} Addnew={this.addNewEvent} /*edit={this.editEvent}*/  />
 
-          </div>
-          </Modal>:''
-        }
+              </div>
+              </Modal>:''
+            }
 
 
       </div>

@@ -23,7 +23,8 @@ const postBooking = (req, res) => {
 		end_date_time: req.body.items[0].endDateTime.split('T').slice(0)[0],
 		end_time: req.body.items[0].endDateTime.split('T').slice(0)[1].split('.').slice(0)[0],
 		destination: 'IKEA',
-		driver_name: 'Inês'
+		driver_name: req.body.items[0].name,
+		classes:req.body.items[0].classes
 	};
 	
 	const car_plate = '72-VZ-96';
