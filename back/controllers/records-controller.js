@@ -15,12 +15,7 @@ const getRecords = (req, res) => {
 };
 
 const postBooking = (req, res) => {
-	//console.log(req.body.items[0].startDateTime.split('T').slice(0)[1].split('.').slice(0));
-	/* book_date,
-	start_date_time,
-	start_time,
-	end_date_time,
-	end_time, */
+	
 	const info = {
 		book_date: req.body.items[0].startDateTime.split('T').slice(0)[0],
 		start_date_time: req.body.items[0].startDateTime.split('T').slice(0)[0],
@@ -30,7 +25,7 @@ const postBooking = (req, res) => {
 		destination: 'IKEA',
 		driver_name: 'Inês'
 	};
-	//console.log(info);
+	
 	const car_plate = '72-VZ-96';
 	Record.postBooking(info, car_plate, (err, results) => {
 		if(err) {
@@ -38,6 +33,7 @@ const postBooking = (req, res) => {
 			res.status(500).json({ message: 'Error posting this booking' });
 		} else {
 			res.sendStatus(200);
+			
 		}
     });
     

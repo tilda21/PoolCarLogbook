@@ -6,11 +6,9 @@ const TripKm = (props) => {
     const [km, setKm] = useState(0);
     const [stageMoment, setStageMoment] = useState('');
 
-    console.log('TripKm props: ', props);
     const id = props.id;
     const data = props.data;
     const trip = data.find(element => element.id === +id);
-    //console.log(trip);
     const startkm = trip.start_km;
     const endkm = trip.end_km;
     let stage = '';
@@ -22,19 +20,15 @@ const TripKm = (props) => {
         stage = 'crash'
     }
     const updateKm = (e) => {
-        console.log('name ', e.target.name);
         setKm(e.target.value);
         setStageMoment(e.target.name);      
     }
 
     const handleSubmit = (e) => {
-        //console.log('stage moment ate handleSubmit ', stageMoment)
-        //console.log('name', e.target[0].name);
-        console.log('handleSubmit was called');
-        
+         
         const url = 'http://localhost:5000/';
         let putMethod = {};
-        if(stageMoment=='start_km'){
+        if(stageMoment==='start_km'){
             putMethod = {
                 method: 'PUT', // Method itself
                 headers: {

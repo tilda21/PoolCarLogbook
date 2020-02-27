@@ -1,39 +1,11 @@
 import React from 'react';
 import Moment from 'react-moment';
-import Button from './Button';
 import { Link } from "react-router-dom";
 
 import './triplog.css';
 
 const TripCard = ({ trip }) => {
-<<<<<<< HEAD
-    console.log(trip);
-    return (
-=======
-    //console.log(trip);
-
-    return(
-<<<<<<< HEAD
->>>>>>> 65482e7a42b7deeeaf279ad31b27fec1f193006b
-        <div className="triplog_card">
-            <div className="triplog_driver_info">
-               <div className="triplog_driver_bold">
-                    Driver:
-                </div>
-                {trip.driver_name}
-            </div>
-            <div className="triplog_reservation_info">
-                <div className="triplog_reservation_bold">
-                    Reservation date:
-                </div>
-                <Moment format='DD/MMM/YYYY'>
-                    {trip.start_date_time}
-                </Moment>
-            </div>
-            <div className="triplog_destination_info">
-                <div className="triplog_destination_bold">
-                    Destination:
-=======
+       return(
         <>
             <div className="triplog_card">
                 <div className="triplog_destination_info">
@@ -49,7 +21,6 @@ const TripCard = ({ trip }) => {
                     <Moment format='DD/MMM/YYYY'>
                         {trip.book_date}
                     </Moment>
->>>>>>> 210edffc2fe25ce34db0856b3dee25efb74b6ac8
                 </div>
                 <div className="triplog_destination_info">
                     <div className="triplog_destination_bold">    
