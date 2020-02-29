@@ -1,36 +1,17 @@
 import React, { Component } from 'react';
+import Info from './Info';
 import moment from 'moment';
-import { ReactAgenda, ReactAgendaCtrl, guid, Modal } from 'react-agenda';
+import { ReactAgenda, ReactAgendaCtrl, Modal} from 'react-agenda';
 
 const now = new Date();
 
 
-    const colors= {
-      'color-1':"rgba(102, 195, 131 , 1)" ,
-      "color-2":"rgba(242, 177, 52, 1)" ,
-      "color-3":"rgba(235, 85, 59, 1)" ,
-      "color-4":"rgba(70, 159, 213, 1)",
-      "color-5":"rgba(170, 59, 123, 1)"
-    }
+const colors={ "color-5":"rgba(170, 59, 123, 1)"}     
 
 
-const items = [
-  /* {
-   _id            :guid(),
-    name          : 'Meeting , dev staff!',
-    startDateTime : new Date(now.getFullYear(), now.getMonth(), now.getDate(), 10, 0),
-    endDateTime   : new Date(now.getFullYear(), now.getMonth(), now.getDate(), 12, 0),
-    classes       : 'color-1 color-4'
-  },
-  {
-    _id            :guid(),
-     name          : 'bla bla',
-     startDateTime : new Date(now.getFullYear(), now.getMonth(), now.getDate(), 10, 0),
-     endDateTime   : new Date(now.getFullYear(), now.getMonth(), now.getDate(), 12, 0),
-     classes       : 'color-1 color-4'
-   },
-   */
-];
+const items = [];
+
+
 
 export default class Agenda extends Component {
   constructor(props){
@@ -40,15 +21,15 @@ export default class Agenda extends Component {
       selected:[],
       cellHeight:(60 / 4),
       showModal:false,
-      locale:"fr",
       rowsPerHour:1,
-      numberOfDays:1,
-      startDate: new Date()
+      numberOfDays:7,
+      startDate: new Date(),
+      newItem:[]
     }
   }
 
   componentDidMount(){
-    this.setState({ items })
+    this.setState({ items })    
   }
 
   componentWillReceiveProps(next , last){
@@ -57,6 +38,12 @@ export default class Agenda extends Component {
     }
   }
 
+
+  callbackFunction = (item) => {
+    this.setState({ newItem: item });
+     
+}
+
   handleItemEdit = (item, openModal) => {
     if(item && openModal === true){
       this.setState({ selected:[item] })
@@ -64,7 +51,7 @@ export default class Agenda extends Component {
     }
   }
 
-  handleCellSelection = (item, openModal) => {
+  handleCellSelection = (item, _openModal) => {
     if(this.state.selected && this.state.selected[0] === item){
       return this._openModal();
     }
@@ -114,19 +101,7 @@ export default class Agenda extends Component {
     this.setState({ items });
   }
 
-  handleFetch = (items) => {
-    //console.log('estamos dentro da handleFetch e isto é o que recebemos: ', items);
-    fetch('http://localhost:5000/',
-      {
-        method: 'POST',
-        headers: new Headers({
-          'Content-Type': 'application/json'
-        }),
-        body: JSON.stringify(this.state),
-      })
-      .then(res => res.json());  
-    }
-
+ 
   addNewEvent = (items , newItems) => {
     //console.log('items: ', items);
     //console.log('newItems: ', newItems);
@@ -151,16 +126,18 @@ export default class Agenda extends Component {
     
     var AgendaItem = function(props){
       
-      return <div style={{display:'block', position:'absolute' , background:'#FFF'}}>{props.item.name} <button onClick={()=> props.edit(props.item)}>Edit </button></div>
+      return <div style={{ display: 'block', position: 'absolute', background: '#FFF' }}>
+                 {props.item.name}
+                    <button onClick={() => props.edit(props.item)}>Edit </button></div>
     }
     return (
       
       <div className="content-expanded ">
 
         <div className="control-buttons">
-          <button  className="button-control" onClick={this.zoomIn}> <i className="zoom-plus-icon"></i> </button>
-          <button  className="button-control" onClick={this.zoomOut}> <i className="zoom-minus-icon"></i> </button>
-          <button  className="button-control" onClick={this._openModal}> <i className="schedule-icon"></i> </button>
+          <button  className="button-control" onClick={this.zoomIn}>Zoom +<i className="zoom-plus-icon"></i> </button>
+          <button  className="button-control" onClick={this.zoomOut}>Zoom -<i className="zoom-minus-icon"></i> </button>
+          <button  className="button-control" onClick={this._openModal}>Schedule<i className="schedule-icon"></i> </button>
           <button  className="button-control" onClick={this.changeView.bind(null , 7)}> {moment.duration(7, "days").humanize()}  </button>
           <button  className="button-control" onClick={this.changeView.bind(null , 5)}> {moment.duration(5, "days").humanize()}  </button>
           <button  className="button-control" onClick={this.changeView.bind(null , 3)}> {moment.duration(3, "days").humanize()}  </button>
@@ -174,7 +151,6 @@ export default class Agenda extends Component {
           startAtTime={8}
           endAtTime={23}
           cellHeight={this.state.cellHeight}
-          locale="fr"
           items={this.props.data}
           numberOfDays={this.state.numberOfDays}
           headFormat={"ddd DD MMM"}
@@ -192,17 +168,16 @@ export default class Agenda extends Component {
           onCellSelect={this.handleCellSelection.bind(this)}
           onItemRemove={this.removeEvent.bind(this)}
           onDateRangeChange={this.handleDateRangeChange.bind(this)} />
-        {
-          this.state.showModal? <Modal clickOutside={this._closeModal} >
-          <div className="modal-content">
-             <ReactAgendaCtrl items={this.state.items} itemColors={colors} selectedCells={this.state.selected} Addnew={this.addNewEvent} edit={this.editEvent}  />
-
-          </div>
-          </Modal>:''
-        }
-
-
-      </div>
+            {
+              this.state.showModal? <Modal clickOutside={this._closeModal} >
+              <div className="modal-content">
+              {/*<ReactAgendaCtrl items={this.state.items} itemColors={colors} selectedCells={this.state.selected} Addnew={this.addNewEvent} edit={this.editEvent}/>*/}
+                                 
+               <Info items={this.state.items} selectedCells={this.state.selected} Addnew={this.addNewEvent} edit={this.editEvent}  ></Info>            
+              </div>           
+              </Modal>:''
+            }
+     </div>
 
     );
   }

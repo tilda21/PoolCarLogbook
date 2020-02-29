@@ -14,7 +14,7 @@ Record.getAllRecords = (callback) => {
 
 
 //create new Booking - insert info in records table
-Record.postBooking = (recordInfo, car_plate, callback) => {
+Record.postBooking = (recordInfo, callback) => {
 	connection.query(
 		`INSERT INTO records (
 			book_date,
@@ -34,7 +34,7 @@ Record.postBooking = (recordInfo, car_plate, callback) => {
             recordInfo.end_time,
             recordInfo.destination,
             recordInfo.driver_name,
-            car_plate
+            recordInfo.car_plate
 		],
 		(err, results, fields) => {
 			callback(err, results, fields);

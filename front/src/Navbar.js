@@ -4,7 +4,7 @@ import './Navbar.css';
 
 const Navbar = () => {
     return(
-        <div className='navbar-container'>
+        <div class='navbar-container'>
             <div>
                 <Link to='/'>
                     <img src="https://i.imgur.com/j8aPf6r.png" alt="Volkswagen Digital Solutions" class="VWDS-logo"/>

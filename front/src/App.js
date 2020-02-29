@@ -28,9 +28,8 @@ class App extends Component {
   getAllData = () => {
     fetch('http://localhost:5000/')
       .then(res => res.json())
-      .then(data => {
-        //console.log('fetch', data);
-        const items = data.map(el => 
+      .then(data => {        
+         const items = data.map(el => 
          ({
           _id: el.id,
           name: el.driver_name,
@@ -60,7 +59,6 @@ class App extends Component {
   render() {
     
     const { data, details } = this.state;
-    console.log('estamos a fazer render: ', details)
     const dataStart = [];
     const dataEnd = [];
 
@@ -78,7 +76,6 @@ class App extends Component {
     for (let i=0; i < details.length; i++) {
       verification(i);
     }
-    //console.log(dataStart);
     return (
       <>
         <Navbar />
@@ -92,16 +89,13 @@ class App extends Component {
             path='/tripkm/:id' 
             render={
               (props) => {
-                /* console.log('match params: ', props)
-                console.log(details); */
                 const id = props.match.params.id;
                 return <TripKm data={details} id={id} />
               }
             }
           />
         </Switch>       
-
-        <Footer />
+      <Footer/>     
       </>
     );
   }

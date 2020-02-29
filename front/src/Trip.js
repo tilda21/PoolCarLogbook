@@ -5,8 +5,7 @@ import './triplog.css';
 const Trip = (props) => {
 
     const details = props.details;
-    //console.log('this is the props recieved in Trip', props);
-    
+      
     return(
         <>
             <h1 class="triplog_title">Select your trip/Trips log</h1>

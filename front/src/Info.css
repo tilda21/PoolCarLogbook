@@ -1,0 +1,33 @@
+.info {
+    text-align: center;
+}
+.event {
+    display:flex;
+}
+.name {
+    padding:10px;
+}
+
+.destination {
+    padding: 10px;
+}
+
+.plate {
+    display:inline-flex;
+    padding:10px;
+    flex-wrap:nowrap;
+}
+
+.start input{
+    padding:10px;
+    
+}
+
+.end input{
+    padding:10px;
+  
+}
+
+.modal_save  {
+    padding:10px;
+}

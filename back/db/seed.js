@@ -1,5 +1,4 @@
 const connection = require('./config');
-
 const insertRecords = new Promise(
 	(resolve, reject) => connection.query(`INSERT INTO records (book_date, start_date_time, start_time, end_date_time, end_time, start_km, end_km, driver_name, car_plate, destination) VALUES 
 		('2020-02-10', '2020-02-10', '10:00', '2020-02-10', '11:00', '56789', '56890', 'raquel', 'AD-35-GH', 'IKEA'),
