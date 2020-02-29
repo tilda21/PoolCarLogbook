@@ -17,18 +17,19 @@ const getRecords = (req, res) => {
 const postBooking = (req, res) => {
 	
 	const info = {
-		book_date: req.body.items[0].startDateTime.split('T').slice(0)[0],
-		start_date_time: req.body.items[0].startDateTime.split('T').slice(0)[0],
-		start_time: req.body.items[0].startDateTime.split('T').slice(0)[1].split('.').slice(0)[0],
-		end_date_time: req.body.items[0].endDateTime.split('T').slice(0)[0],
-		end_time: req.body.items[0].endDateTime.split('T').slice(0)[1].split('.').slice(0)[0],
-		destination: 'IKEA',
-		driver_name: req.body.items[0].name,
-		classes:req.body.items[0].classes
+		book_date: req.body.start_date,
+		start_date_time: req.body.start_date,
+		start_time: req.body.start_time,
+		end_date_time: req.body.end_date,
+		end_time: req.body.end_time,
+		destination: req.body.destination,
+		driver_name: req.body.name,
+		car_plate:req.body.car_plate
+		
 	};
 	
-	const car_plate = '72-VZ-96';
-	Record.postBooking(info, car_plate, (err, results) => {
+	
+	Record.postBooking(info, (err, results) => {
 		if(err) {
 			console.log(err)
 			res.status(500).json({ message: 'Error posting this booking' });
