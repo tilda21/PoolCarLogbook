@@ -46,7 +46,7 @@ export default class Trip extends Component {
                 <div class="triplog_content">
                     <div style={{padding:'20px'}} class="triplog_select">
                         <label style={{fontSize:'20px', fontWeight:'bold'}}>Choose a driver:</label>
-                        <select style={{textAlign:'center', width:'200px'}}onChange={this.changeDriver} defaultValue='ALL' name="selectedDriver" >
+                        <select class='driver_select'style={{textAlign:'center', width:'200px'}}onChange={this.changeDriver} defaultValue='ALL' name="selectedDriver" >
                             <option id="driver" value='ALL'>ALL</option>
                             {[...new Set(this.props.details
                                 .map(el => el.driver_name))].sort().map((driver =>
