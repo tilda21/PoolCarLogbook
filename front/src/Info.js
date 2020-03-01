@@ -1,6 +1,8 @@
 import React,{Component} from 'react';
 import './Info.css';
 
+const items = [];
+
 class Info extends Component {
     constructor(props){
         super(props);
@@ -11,12 +13,18 @@ class Info extends Component {
                 start_date:'',
                 end_date: '',
                 start_time:'',
-                end_time: ''                                     
+                end_time: '',
+                items:[]
+                
             
         }
 
         this.infoInput = this.infoInput.bind(this); 
     }
+
+    componentDidMount() {
+        this.setState({ items })
+      }
    
     infoInput = (e) => {
         this.setState({
@@ -50,36 +58,38 @@ class Info extends Component {
             <div class="info_container">
    	  
                 <form class="info" onSubmit={this.infoInput}>
-                    <h3>BOOK A CAR</h3>
+                    <h2>BOOK A CAR</h2>
                     <div class='event'>
                         <h4>Driver name:</h4>
-                        <input class='name'type="text" name="name" value={item.name} onChange={this.infoInput}/>
+                        <input class='name'type="text" name="name" value={item.name} onChange={this.infoInput} required/>
                         <h4>Destination:</h4>
-                        <input class='destination' type="text" name="destination" value={item.destination} onChange={this.infoInput} />
+                        <input class='destination' type="text" name="destination" value={item.destination} onChange={this.infoInput} required />
                     </div>
                      
                     <div class='start'>
                         <label>Start Date </label>
-                        <input type="date" name="start_date" value={item.start_date} onChange={this.infoInput}></input> 
+                        <input type="date" name="start_date" value={item.start_date} onChange={this.infoInput} required></input> 
                         <label>Start time </label>
-                        <input type="time" name="start_time" value={item.start_time} onChange={this.infoInput}></input> 
+                        <input type="time" name="start_time" value={item.start_time} onChange={this.infoInput} required></input> 
                     </div>
                     <div class='end'>
                         <label>End Date</label>
-                        <input type="date" name="end_date" value={item.end_date} onChange={this.infoInput}></input>
+                        <input type="date" name="end_date" value={item.end_date} onChange={this.infoInput} required></input>
                         <label>End time </label>
-                        <input type="time" name="end_time" value={item.end_time} onChange={this.infoInput}></input> 
+                        <input type="time" name="end_time" value={item.end_time} onChange={this.infoInput} required></input> 
                     </div>
-                    <h4>Choose the car plate:</h4>
-                    <select class='plate' type='text' name="car_plate" value={item.car_plate} onChange={this.infoInput}>
+                    <div class='plate'>
+                    <select type='text' name="car_plate" value={item.car_plate} onChange={this.infoInput} required>
+                        <option id='1' value='no plate'>Choose a car plate</option>
                         <option id='1' value='72-VZ-96'>72-VZ-96</option>
                         <option id='2' value='73-VZ-96'>73-VZ-96</option>
                         <option id='3' value='74-VZ-96'>74-VZ-96</option>
                         <option id='4' value='75-VZ-96'>75-VZ-96</option>
-                    </select>
-                    <div>
-                        <button class='modal_save' item={item} type='submit' value='Submit' onClick={this.fetchNew}>SAVE</button>
+                        </select>
                     </div>
+                  
+                        <button class='modal_save' item={item} type='submit' value='Submit' onClick={this.fetchNew}>SAVE</button>
+                    
                     
                 </form>
 

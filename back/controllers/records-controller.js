@@ -41,6 +41,10 @@ const postBooking = (req, res) => {
     
 };
 
+
+
+
+
 const updateBooking = (req, res) => {
 	console.log(req.body.id)
 	console.log(req.body.start_km)

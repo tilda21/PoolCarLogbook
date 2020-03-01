@@ -1,71 +1,67 @@
 import React, { Component } from 'react';
-import Info from './Info';
+import ModalCtrl from './ModalCtrl';
 import moment from 'moment';
-import { ReactAgenda, ReactAgendaCtrl, Modal} from 'react-agenda';
+import { ReactAgenda, ReactAgendaCtrl, Modal } from 'react-agenda';
 
 const now = new Date();
 
 
-const colors={ "color-5":"rgba(170, 59, 123, 1)"}     
-
+const colors = {
+  "color-5": 'rgb(162, 30, 77)'
+}
 
 const items = [];
 
 
 
+
 export default class Agenda extends Component {
-  constructor(props){
+  constructor(props) {
     super(props);
     this.state = {
-      items:[],
-      selected:[],
-      cellHeight:(60 / 4),
-      showModal:false,
-      rowsPerHour:1,
-      numberOfDays:7,
+      items: [],
+      selected: [],
+      cellHeight: (60 / 4),
+      showModal: false,
+      rowsPerHour: 1,
+      numberOfDays: 7,
       startDate: new Date(),
-      newItem:[]
     }
   }
 
-  componentDidMount(){
-    this.setState({ items })    
+  componentDidMount() {
+    this.setState({ items })
   }
 
-  componentWillReceiveProps(next , last){
-    if(next.items){
+  componentWillReceiveProps(next, last) {
+    if (next.items) {
       this.setState({ items: next.items })
     }
   }
 
 
-  callbackFunction = (item) => {
-    this.setState({ newItem: item });
-     
-}
-
   handleItemEdit = (item, openModal) => {
-    if(item && openModal === true){
-      this.setState({ selected:[item] })
+    if (item && openModal === true) {
+      this.setState({ selected: [item] })
       return this._openModal();
     }
   }
 
   handleCellSelection = (item, _openModal) => {
-    if(this.state.selected && this.state.selected[0] === item){
+    if (this.state.selected && this.state.selected[0] === item) {
       return this._openModal();
     }
-      this.setState({ selected:[item] })
+    this.setState({ selected: [item] })
   }
 
   zoomIn = () => {
     const num = this.state.cellHeight + 15
-    this.setState({ cellHeight:num })
+    this.setState({ cellHeight: num })
   }
 
   zoomOut = () => {
     const num = this.state.cellHeight - 15
-    this.setState({ cellHeight:num })
+    this.setState({ cellHeight: num })
   }
 
 
@@ -74,79 +70,84 @@ export default class Agenda extends Component {
   }
 
   handleRangeSelection = (selected) => {
-    this.setState({ selected:selected, showCtrl:true })
+    this.setState({ selected: selected, showCtrl: true })
     this._openModal();
   }
 
   _openModal = () => {
-    this.setState({ showModal:true })
+    this.setState({ showModal: true })
   }
-  _closeModal = (e) =>{
-    if(e){
+  _closeModal = (e) => {
+    if (e) {
       e.stopPropagation();
       e.preventDefault();
     }
-    this.setState({ showModal:false })
+    this.setState({ showModal: false })
   }
 
-  handleItemChange = (items , item) => {
+  handleItemChange = (items, item) => {
     this.setState({ items })
   }
 
-  handleItemSize = (items , item) => {
+  handleItemSize = (items, item) => {
     this.setState({ items })
   }
 
-  removeEvent = (items , item) => {
+  removeEvent = (items, item) => {
     this.setState({ items });
   }
 
- 
-  addNewEvent = (items , newItems) => {
+
+  addNewEvent = (items, newItems) => {
     //console.log('items: ', items);
     //console.log('newItems: ', newItems);
- 
-    this.setState({ showModal:false, selected:[], items:newItems });
+
+    this.setState({ showModal: false, selected: [], items: newItems });
     this._closeModal();
-    
-    this.handleFetch(this.state.items);
+
+    //this.handleFetch(this.state.items);
   }
 
-  editEvent = (items , item) => {
-    this.setState({ showModal:false, selected:[], items });
+  editEvent = (items, item) => {
+    this.setState({ showModal: false, selected: [], items });
     this._closeModal();
   }
 
-  changeView = (days , event ) => {
-    this.setState({ numberOfDays:days })
+  changeView = (days, event) => {
+    this.setState({ numberOfDays: days })
   }
 
 
   render() {
-    
-    var AgendaItem = function(props){
+
+    var AgendaItem = function (props) {
+
+      return <div style={{ display: 'block', position: 'relative', background: 'rgb(162, 30, 77)', color:'white',padding: '10px' }}>
+          {props.item.name}||{props.item.car_plate}
+        
+        {/*<button onClick={() => props.edit(props.item)}> edit </button>*/}
       
-      return <div style={{ display: 'block', position: 'absolute', background: '#FFF' }}>
-                 {props.item.name}
-                    <button onClick={() => props.edit(props.item)}>Edit </button></div>
+    </div>
+    
+
     }
     return (
-      
+
       <div className="content-expanded ">
 
         <div className="control-buttons">
-          <button  className="button-control" onClick={this.zoomIn}>Zoom +<i className="zoom-plus-icon"></i> </button>
-          <button  className="button-control" onClick={this.zoomOut}>Zoom -<i className="zoom-minus-icon"></i> </button>
-          <button  className="button-control" onClick={this._openModal}>Schedule<i className="schedule-icon"></i> </button>
-          <button  className="button-control" onClick={this.changeView.bind(null , 7)}> {moment.duration(7, "days").humanize()}  </button>
-          <button  className="button-control" onClick={this.changeView.bind(null , 5)}> {moment.duration(5, "days").humanize()}  </button>
-          <button  className="button-control" onClick={this.changeView.bind(null , 3)}> {moment.duration(3, "days").humanize()}  </button>
-          <button  className="button-control" onClick={this.changeView.bind(null , 1)}> {moment.duration(1, "day").humanize()} </button>
+          <button className="button-control" style={{padding:'7px', background:'black', color:'white'}} onClick={this.zoomIn}>Zoom +<i className="zoom-plus-icon"></i> </button>
+          <button className="button-control" style={{padding:'7px', background:'black', color:'white'}} onClick={this.zoomOut}>Zoom -<i className="zoom-minus-icon"></i> </button>
+          <button className="button-control" style={{padding:'7px', background:'black', color:'white'}} onClick={this.changeView.bind(null, 7)}> {moment.duration(7, "days").humanize()}  </button>
+          <button className="button-control" style={{padding:'7px', background:'black', color:'white'}} onClick={this.changeView.bind(null, 5)}> {moment.duration(5, "days").humanize()}  </button>
+          <button className="button-control" style={{padding:'7px', background:'black', color:'white'}} onClick={this.changeView.bind(null, 3)}> {moment.duration(3, "days").humanize()}  </button>
+          <button className="button-control" style={{padding:'7px', background:'black', color:'white'}} onClick={this.changeView.bind(null, 1)}> {moment.duration(1, "day").humanize()} </button>
+          <button className="button-control" style={{padding:'7px', margin:'10px', background:'rgb(162, 30, 77)', color:'white'}} onClick={this._openModal}>Schedule<i className="schedule-icon"></i> </button>
         </div>
 
         <ReactAgenda
-          minDate={new Date(now.getFullYear(), now.getMonth()-3)}
-          maxDate={new Date(now.getFullYear(), now.getMonth()+3)}
+          minDate={new Date(now.getFullYear(), now.getMonth() - 3)}
+          maxDate={new Date(now.getFullYear(), now.getMonth() + 3)}
           startDate={this.state.startDate}
           startAtTime={8}
           endAtTime={23}
@@ -168,16 +169,16 @@ export default class Agenda extends Component {
           onCellSelect={this.handleCellSelection.bind(this)}
           onItemRemove={this.removeEvent.bind(this)}
           onDateRangeChange={this.handleDateRangeChange.bind(this)} />
-            {
-              this.state.showModal? <Modal clickOutside={this._closeModal} >
-              <div className="modal-content">
+        {
+          this.state.showModal ? <Modal clickOutside={this._closeModal} >
+            <div className="modal-content">
               {/*<ReactAgendaCtrl items={this.state.items} itemColors={colors} selectedCells={this.state.selected} Addnew={this.addNewEvent} edit={this.editEvent}/>*/}
-                                 
-               <Info items={this.state.items} selectedCells={this.state.selected} Addnew={this.addNewEvent} edit={this.editEvent}  ></Info>            
-              </div>           
-              </Modal>:''
-            }
-     </div>
+
+              <ModalCtrl items={this.state.items} selectedCells={this.state.selected} Addnew={this.addNewEvent} edit={this.editEvent}></ModalCtrl>
+            </div>
+          </Modal> : ''
+        }
+      </div>
 
     );
   }

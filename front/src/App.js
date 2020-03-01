@@ -7,6 +7,7 @@ import Footer from './Footer';
 import Trip from './Trip';
 import TripKm from './TripKm';
 import Homepage from './Homepage';
+import ModalCtrl from './ModalCtrl';
 
 //the data and details are the information coming from the database, 
 //the data is the information that is going to be used in the agenda for the bookings and the listing of trips
@@ -37,9 +38,11 @@ class App extends Component {
           endDateTime: new Date(el.end_date_time.split('00:00:00').join(el.end_time)),
           classes: 'color-5',
           start_time: el.start_time,
-          end_time: el.end_time
+          end_time: el.end_time,
+          car_plate:el.car_plate
         }))
         const details = data.map(element => ({
+          start_date_time:element.start_date_time,
           id: element.id,
           driver_name: element.driver_name,
           destination: element.destination,
@@ -83,7 +86,7 @@ class App extends Component {
           <Route exact path='/' component={() => <Homepage data={data} />} />
           <Route path='/trip/start' component={() => <Trip details={dataStart}/>} />
           <Route path='/trip/end' component={() => <Trip details={dataEnd}/>} />
-          <Route path='/trip' component={() => <Trip details={details}/>} />
+          <Route path='/trip' component={() => <Trip data={data} details={details}/>} />
           <Route path='/booking' component={() => <Booking data={data} />} />
           <Route 
             path='/tripkm/:id' 
@@ -91,6 +94,15 @@ class App extends Component {
               (props) => {
                 const id = props.match.params.id;
                 return <TripKm data={details} id={id} />
+              }
+            }
+          />
+          <Route 
+            path='/info/:id' 
+            render={
+              (props) => {
+                const id = props.match.params.id;
+                return <ModalCtrl details={details} id={id} />
               }
             }
           />

@@ -1,6 +1,5 @@
 import React from 'react';
 import Moment from 'react-moment';
-// import Button from './Button';
 import { Link } from "react-router-dom";
 
 import './triplog.css';
@@ -20,7 +19,7 @@ const TripCard = ({ trip }) => {
                         Reservation date:
                     </div> 
                     <Moment format='DD/MMM/YYYY'>
-                        {trip.book_date}
+                        {trip.start_date_time}
                     </Moment>
                 </div>
                 <div className="triplog_destination_info">

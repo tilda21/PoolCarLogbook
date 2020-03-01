@@ -74,4 +74,15 @@ Record.updateEndTrip = (recordInfo, callback) => {
 	);
 };
 
+// DELETE record
+/*Record.deleteRecord = (id, callback) => {
+	connection.query(
+		`DELETE FROM records WHERE id=?`,
+		id,
+		(err, results, fields) => {
+			callback(err, results, fields);
+		}
+	);
+};*/
+
 module.exports = Record;
