@@ -10,7 +10,7 @@ export default class Trip extends Component {
         super(props);
         this.state = {
             details: [],
-            selectedDriver: ''
+            selectedDriver: 'ALL'
         }
     }
 
@@ -42,11 +42,11 @@ export default class Trip extends Component {
 
             <>
 
-                <h1 class="triplog_title">Trips log</h1>
-                <div className="triplog_content">
-                    <div className="triplog_select">
-                        <label>Choose a driver:</label>
-                        <select onChange={this.changeDriver} name="selectedDriver" >
+                <h1 style={{padding:'20px'}} class="triplog_title">Trips log</h1>
+                <div class="triplog_content">
+                    <div style={{padding:'20px'}} class="triplog_select">
+                        <label style={{fontSize:'20px', fontWeight:'bold'}}>Choose a driver:</label>
+                        <select style={{textAlign:'center', width:'200px'}}onChange={this.changeDriver} defaultValue='ALL' name="selectedDriver" >
                             <option id="driver" value='ALL'>ALL</option>
                             {[...new Set(this.props.details
                                 .map(el => el.driver_name))].sort().map((driver =>
@@ -56,17 +56,7 @@ export default class Trip extends Component {
                     </div>
                     {this.tripsList()}
 
-                    {/* {
-                    this.props.details.map(trip => <TripCard trip={trip} key={trip.id} />)
-                     } 
-
-                    {
-                        this.props.details.filter(el => {
-                            return el.driver_name === this.state.selectedDriver
-                        })
-                            .sort().map(trip => <TripCard trip={trip} key={trip.id} />)
-                    } */}
-                </div>
+                    </div>
             </>
         );
 

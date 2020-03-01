@@ -6,8 +6,9 @@ import { ReactAgenda, ReactAgendaCtrl, Modal } from 'react-agenda';
 const now = new Date();
 
 
-const colors = { "color-5": "rgba(170, 59, 123, 1)" }
-
+const colors = {
+  "color-5": 'rgb(162, 30, 77)'
+}
 
 const items = [];
 
@@ -22,7 +23,7 @@ export default class Agenda extends Component {
       selected: [],
       cellHeight: (60 / 4),
       showModal: false,
-      rowsPerHour: 2,
+      rowsPerHour: 1,
       numberOfDays: 7,
       startDate: new Date(),
     }
@@ -121,7 +122,7 @@ export default class Agenda extends Component {
 
     var AgendaItem = function (props) {
 
-      return <div style={{ display: 'block', position: 'relative', background: '#FFF', padding: '5px' }}>
+      return <div style={{ display: 'block', position: 'relative', background: 'rgb(162, 30, 77)', color:'white',padding: '10px' }}>
           {props.item.name}||{props.item.car_plate}
         
         {/*<button onClick={() => props.edit(props.item)}> edit </button>*/}
@@ -135,13 +136,13 @@ export default class Agenda extends Component {
       <div className="content-expanded ">
 
         <div className="control-buttons">
-          <button className="button-control" onClick={this.zoomIn}>Zoom +<i className="zoom-plus-icon"></i> </button>
-          <button className="button-control" onClick={this.zoomOut}>Zoom -<i className="zoom-minus-icon"></i> </button>
-          <button className="button-control" onClick={this._openModal}>Schedule<i className="schedule-icon"></i> </button>
-          <button className="button-control" onClick={this.changeView.bind(null, 7)}> {moment.duration(7, "days").humanize()}  </button>
-          <button className="button-control" onClick={this.changeView.bind(null, 5)}> {moment.duration(5, "days").humanize()}  </button>
-          <button className="button-control" onClick={this.changeView.bind(null, 3)}> {moment.duration(3, "days").humanize()}  </button>
-          <button className="button-control" onClick={this.changeView.bind(null, 1)}> {moment.duration(1, "day").humanize()} </button>
+          <button className="button-control" style={{padding:'7px', background:'black', color:'white'}} onClick={this.zoomIn}>Zoom +<i className="zoom-plus-icon"></i> </button>
+          <button className="button-control" style={{padding:'7px', background:'black', color:'white'}} onClick={this.zoomOut}>Zoom -<i className="zoom-minus-icon"></i> </button>
+          <button className="button-control" style={{padding:'7px', background:'black', color:'white'}} onClick={this.changeView.bind(null, 7)}> {moment.duration(7, "days").humanize()}  </button>
+          <button className="button-control" style={{padding:'7px', background:'black', color:'white'}} onClick={this.changeView.bind(null, 5)}> {moment.duration(5, "days").humanize()}  </button>
+          <button className="button-control" style={{padding:'7px', background:'black', color:'white'}} onClick={this.changeView.bind(null, 3)}> {moment.duration(3, "days").humanize()}  </button>
+          <button className="button-control" style={{padding:'7px', background:'black', color:'white'}} onClick={this.changeView.bind(null, 1)}> {moment.duration(1, "day").humanize()} </button>
+          <button className="button-control" style={{padding:'7px', margin:'10px', background:'rgb(162, 30, 77)', color:'white'}} onClick={this._openModal}>Schedule<i className="schedule-icon"></i> </button>
         </div>
 
         <ReactAgenda
