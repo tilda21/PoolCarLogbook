@@ -10,49 +10,66 @@ export default class Trip extends Component {
         super(props);
         this.state = {
             details: [],
-            selectedDriver:''
+            selectedDriver: ''
         }
     }
 
-           
-    changeDriver = (e )=> {
+
+    changeDriver = (e) => {
         this.setState({
-            [e.target.name] : e.target.value})
-   
-     }
-    
-    render() {       
-      
-    return (
+            [e.target.name]: e.target.value
+        })
 
-        <>
+    }
 
-            <h1 class="triplog_title">Trips log</h1>
-            <div className="triplog_content">
-                <div className="triplog_select">
-                    <label>Choose a driver:</label>
-                    <select onChange={this.changeDriver} name="selectedDriver" >
-                        <option>ALL</option>
-                        {[...new Set(this.props.details
-                            .map(el => el.driver_name))].sort().map((driver =>
-                                <option id="driver" value={driver}>{driver}</option>))}
+    tripsList = () => {
+        if (this.state.selectedDriver === 'ALL') {
+            return (this.props.details.sort().map(trip => <TripCard trip={trip} key={trip.id} />)
+            )
 
-                    </select>
-                </div>
-              
-                {/* {
+        } else {
+            return (this.props.details.filter(el => {
+                return el.driver_name === this.state.selectedDriver
+            })
+                .sort().map(trip => <TripCard trip={trip} key={trip.id} />)
+            )
+        }
+    }
+
+    render() {
+
+        return (
+
+            <>
+
+                <h1 class="triplog_title">Trips log</h1>
+                <div className="triplog_content">
+                    <div className="triplog_select">
+                        <label>Choose a driver:</label>
+                        <select onChange={this.changeDriver} name="selectedDriver" >
+                            <option id="driver" value='ALL'>ALL</option>
+                            {[...new Set(this.props.details
+                                .map(el => el.driver_name))].sort().map((driver =>
+                                    <option id="driver" value={driver}>{driver}</option>))}
+
+                        </select>
+                    </div>
+                    {this.tripsList()}
+
+                    {/* {
                     this.props.details.map(trip => <TripCard trip={trip} key={trip.id} />)
-                } */}
+                     } 
 
-                {
-                    this.props.details.filter(el => {
-                        return el.driver_name === this.state.selectedDriver
-                    })
-                        .sort().map(trip => <TripCard trip={trip} key={trip.id} />) 
-                }
-            </div>
-        </>
-    );
+                    {
+                        this.props.details.filter(el => {
+                            return el.driver_name === this.state.selectedDriver
+                        })
+                            .sort().map(trip => <TripCard trip={trip} key={trip.id} />)
+                    } */}
+                </div>
+            </>
+        );
+
     }
 
 }
