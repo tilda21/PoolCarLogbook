@@ -1,8 +1,16 @@
 .info {
     text-align: center;
+    font-family: "VWAGTheSans-Bold.otf";
+}
+
+.info h2 {
+    color:rgb(162, 30, 77);
+    padding-bottom:50px;
+    margin-top:0px;
 }
 .event {
     display:flex;
+    padding:20px;
 }
 .name {
     padding:10px;
@@ -13,15 +21,19 @@
 }
 
 .plate {
-    display:inline-flex;
-    padding:10px;
-    flex-wrap:nowrap;
+    display:flex;
+    padding:20px;
+  
 }
 
+.start {
+padding:20px;
+}
 .start input{
     padding:10px;
-    
+   
 }
+
 
 .end input{
     padding:10px;

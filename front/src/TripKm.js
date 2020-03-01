@@ -64,7 +64,7 @@ const TripKm = (props) => {
     return(
         <>
             <h1>Start Trip</h1>
-            <div>Destination: destination</div>
+            <div>Destination: {trip.destination}</div>
             
             <form onSubmit={handleSubmit}>
                 <div>Enter {stage} Kms</div>
