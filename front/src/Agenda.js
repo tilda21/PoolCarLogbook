@@ -142,7 +142,7 @@ export default class Agenda extends Component {
           <button className="button-control" style={{padding:'7px', background:'black', color:'white'}} onClick={this.changeView.bind(null, 5)}> {moment.duration(5, "days").humanize()}  </button>
           <button className="button-control" style={{padding:'7px', background:'black', color:'white'}} onClick={this.changeView.bind(null, 3)}> {moment.duration(3, "days").humanize()}  </button>
           <button className="button-control" style={{padding:'7px', background:'black', color:'white'}} onClick={this.changeView.bind(null, 1)}> {moment.duration(1, "day").humanize()} </button>
-          <button className="button-control" style={{padding:'7px', margin:'10px', background:'rgb(162, 30, 77)', color:'white'}} onClick={this._openModal}>Schedule<i className="schedule-icon"></i> </button>
+          <button className="button-control" style={{padding:'7px', marginLeft:'25vw',marginTop:'30px', marginBottom:'30px', width:'200px', background:'rgb(162, 30, 77)', color:'white', fontWeight:'bold'}} onClick={this._openModal}>Book a car<i className="schedule-icon"></i> </button>
         </div>
 
         <ReactAgenda

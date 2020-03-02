@@ -1,6 +1,12 @@
+.booking-container h1 {
+    margin-top:20px;
+    font-size:35px;
+}
+
 .booking_title {
     font-family: "VWAGTheSans-Bold.otf";
     color:rgb(162, 30, 77);
+   
 }
 
 .booking_subtitle {

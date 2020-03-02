@@ -45,6 +45,18 @@ const TripCard = ({ trip }) => {
                         Car Plate: 
                     </div>
                     {trip.car_plate}
+                   </div>
+                   <div className="triplog_destination_info">
+                    <div style={{fontWeight:'bold', color:'black'}} className="triplog_startkm">    
+                        Start Km: 
+                    </div>
+                    {trip.start_km}
+                   </div>
+                   <div className="triplog_destination_info">
+                       <div style={{fontWeight:'bold', color:'black'}} className="triplog_endkm">    
+                        End Km: 
+                    </div>
+                    {trip.end_km}
                 </div>
 
                 <button>

@@ -1,19 +1,19 @@
 import React from 'react';
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import './Navbar.css';
 
 const Navbar = () => {
     return(
         <div class='navbar-container'>
             <div>
-                <Link to='/'>
+                <NavLink exact to='/' activeClassName='logo'>
                     <img src="https://i.imgur.com/j8aPf6r.png" alt="Volkswagen Digital Solutions" class="VWDS-logo"/>
-                </Link>
+                </NavLink>
             </div>
             <div className="navbar">
-                <Link to='/trip/start'><p class="navbarlink">Start</p></Link>
-                <Link to='/trip/end'><p class="navbarlink">End</p></Link>
-                <Link to='/trip'><p class="navbarlink2">Trips Log</p></Link>
+                <NavLink exact to='/trip/start'activeClassName="active"><p class="navbarlink">Start</p></NavLink>
+                <NavLink exact to='/trip/end'activeClassName="active"><p class="navbarlink">End</p></NavLink>
+                <NavLink exact to='/trip'activeClassName="active"><p class="navbarlink2">Trips Log</p></NavLink>
             </div>
         </div>
     )
